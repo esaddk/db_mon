@@ -12,12 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
@@ -25,4 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-
+Route::get('/availbility', 'AvailbilityController@index')->name('availbility');
+Route::post('/InsertAvailbility', 'AvailbilityController@InsertAvailbility')->name('InsertAvailbility');
+Route::post('/DeleteAvailbility', 'AvailbilityController@destroy')->name('DeleteAvailbility');
+Route::get('/DeleteAvailbility{id}', 'AvailbilityController@destroy')->name('DeleteAvailbility');
+Route::put('/UpdateAvailbility{id}', 'AvailbilityController@UpdateAvailbility')->name('UpdateAvailbility');

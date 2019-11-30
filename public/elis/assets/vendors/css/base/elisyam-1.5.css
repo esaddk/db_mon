@@ -1889,6 +1889,20 @@ a.text-primary:focus, a.text-primary:hover {
   color: #3b5998 !important;
 }
 
+.text-oracle {
+  color: #f30f0c !important;
+}
+
+.text-mysql {
+  color: rgb(240, 147, 27) !important;
+}
+
+.text-postgre {
+  color: #33648d !important;
+}
+
+
+
 .text-twitter {
   color: #1da1f2 !important;
 }
