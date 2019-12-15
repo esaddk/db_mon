@@ -48,4 +48,13 @@ class AvailbilityController extends Controller
         Alert::success('Data Berhasil di hapus')->persistent("Close");
         return back();
     }
+
+    public function destroy($id)
+    {
+        $availbility = Availbility::findOrFail($id);
+
+        $availbility->delete();
+
+        return redirect()->route('availbility')->with('success', 'User deleted successfully');
+    }
 }
