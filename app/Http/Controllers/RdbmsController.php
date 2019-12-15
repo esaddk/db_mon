@@ -54,6 +54,6 @@ class RdbmsController extends Controller
 
         $Rdbms->delete();
 
-        return redirect()->route('Rdbms')->with('success', 'User deleted successfully');
+        return redirect()->route('Rdbms')->with('success', 'RDBMS deleted successfully');
     }
 }

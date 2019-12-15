@@ -26,7 +26,7 @@
             </li>
             <li><a href="components-widgets.html"><i class="la la-database"></i><span>Database</span></a></li>
             <li><a href="{{ route('rdbms') }}"><i class="la la-server"></i><span>RDBMS</span></a></li>
-            <li><a href="components-widgets.html"><i class="la la-desktop"></i><span>Application</span></a></li>
+            <li><a href="{{ route('application') }}"><i class="la la-desktop"></i><span>Application</span></a></li>
             <li><a href="{{ route('availbility') }}"><i class="la la-check-circle"></i><span>DB Availbility</span></a>
             </li>
             <li><a href="components-widgets.html"><i class="la la-user"></i><span>User</span></a></li>

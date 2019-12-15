@@ -55,6 +55,6 @@ class AvailbilityController extends Controller
 
         $availbility->delete();
 
-        return redirect()->route('availbility')->with('success', 'User deleted successfully');
+        return redirect()->route('availbility')->with('success', 'Availbility deleted successfully');
     }
 }

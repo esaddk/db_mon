@@ -21,16 +21,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+// Route Availbility
 Route::get('/availbility', 'AvailbilityController@index')->name('availbility');
 Route::post('/InsertAvailbility', 'AvailbilityController@InsertAvailbility')->name('InsertAvailbility');
-// Route::post('/DeleteAvailbility', 'AvailbilityController@destroy')->name('DeleteAvailbility');
 Route::get('/DeleteAvailbility{id}', 'AvailbilityController@destroyAvailbility')->name('DeleteAvailbility');
-Route::delete('/DeleteAvailbility{id}', 'AvailbilityController@destroy')->name('Delete');
 Route::put('/UpdateAvailbility{id}', 'AvailbilityController@UpdateAvailbility')->name('UpdateAvailbility');
 
+// Route RDBMS
 Route::get('/rdbms', 'RdbmsController@index')->name('rdbms');
 Route::post('/InsertRdbms', 'RdbmsController@InsertRdbms')->name('InsertRdbms');
-// Route::post('/DeleteAvailbility', 'AvailbilityController@destroy')->name('DeleteAvailbility');
 Route::get('/DeleteRdbms{id}', 'RdbmsController@destroyRdbms')->name('DeleteRdbms');
-Route::delete('/DeleteRdbms{id}', 'RdbmsController@destroy')->name('Delete');
 Route::put('/UpdateRdbms{id}', 'RdbmsController@UpdateRdbms')->name('UpdateRdbms');
+
+// Route Application
+Route::get('/application', 'ApplicationController@index')->name('application');
+Route::post('/InsertApplication', 'ApplicationController@InsertApplication')->name('InsertApplication');
+Route::get('/DeleteApplication{id}', 'ApplicationController@destroyApplication')->name('DeleteApplication');
+Route::put('/UpdateApplication{id}', 'ApplicationController@UpdateApplication')->name('UpdateApplication');
