@@ -27,3 +27,10 @@ Route::post('/InsertAvailbility', 'AvailbilityController@InsertAvailbility')->na
 Route::get('/DeleteAvailbility{id}', 'AvailbilityController@destroyAvailbility')->name('DeleteAvailbility');
 Route::delete('/DeleteAvailbility{id}', 'AvailbilityController@destroy')->name('Delete');
 Route::put('/UpdateAvailbility{id}', 'AvailbilityController@UpdateAvailbility')->name('UpdateAvailbility');
+
+Route::get('/rdbms', 'RdbmsController@index')->name('rdbms');
+Route::post('/InsertRdbms', 'RdbmsController@InsertRdbms')->name('InsertRdbms');
+// Route::post('/DeleteAvailbility', 'AvailbilityController@destroy')->name('DeleteAvailbility');
+Route::get('/DeleteRdbms{id}', 'RdbmsController@destroyRdbms')->name('DeleteRdbms');
+Route::delete('/DeleteRdbms{id}', 'RdbmsController@destroy')->name('Delete');
+Route::put('/UpdateRdbms{id}', 'RdbmsController@UpdateRdbms')->name('UpdateRdbms');

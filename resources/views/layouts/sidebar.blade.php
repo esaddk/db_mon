@@ -22,18 +22,20 @@
                     <li><a href="app-contact.html">Contact</a></li>
                 </ul>
             </li> --}}
-            <li class="active"><a href="{{ route('home') }}"><i class="la la-columns"></i><span>Dashboard</span></a></li>
-            <li ><a href="components-widgets.html"><i class="la la-database"></i><span>Database</span></a></li>
-            <li ><a href="components-widgets.html"><i class="la la-server"></i><span>RDBMS</span></a></li>
-            <li ><a href="components-widgets.html"><i class="la la-desktop"></i><span>Application</span></a></li>
-            <li ><a href="{{ route('availbility') }}"><i class="la la-check-circle"></i><span>DB Availbility</span></a></li>
-            <li ><a href="components-widgets.html"><i class="la la-user"></i><span>User</span></a></li>
+            <li class="active"><a href="{{ route('home') }}"><i class="la la-columns"></i><span>Dashboard</span></a>
+            </li>
+            <li><a href="components-widgets.html"><i class="la la-database"></i><span>Database</span></a></li>
+            <li><a href="{{ route('rdbms') }}"><i class="la la-server"></i><span>RDBMS</span></a></li>
+            <li><a href="components-widgets.html"><i class="la la-desktop"></i><span>Application</span></a></li>
+            <li><a href="{{ route('availbility') }}"><i class="la la-check-circle"></i><span>DB Availbility</span></a>
+            </li>
+            <li><a href="components-widgets.html"><i class="la la-user"></i><span>User</span></a></li>
         </ul>
         <span class="heading">Monitoring</span>
         <ul class="list-unstyled">
-            <li ><a href="components-widgets.html"><i class="la la-laptop"></i><span>Table</span></a></li>
-            <li ><a href="components-widgets.html"><i class="la la-laptop"></i><span>Index</span></a></li>
-            <li ><a href="components-widgets.html"><i class="la la-laptop"></i><span>Tablespace</span></a></li>
+            <li><a href="components-widgets.html"><i class="la la-laptop"></i><span>Table</span></a></li>
+            <li><a href="components-widgets.html"><i class="la la-laptop"></i><span>Index</span></a></li>
+            <li><a href="components-widgets.html"><i class="la la-laptop"></i><span>Tablespace</span></a></li>
         </ul>
     </nav>
     <!-- End Side Navbar -->
