@@ -34,6 +34,8 @@ Author: SAEROX
     <link rel="stylesheet" href="{{ asset('elis/assets/css/owl-carousel/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('elis/assets/css/owl-carousel/owl.theme.min.css') }}">
     <link rel="stylesheet" href="{{ asset('elis/assets/css/datatables/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('elis/assets/css/bootstrap-select/bootstrap-select.min.css') }}">
+
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -584,6 +586,8 @@ Author: SAEROX
     <script src="{{ asset('elis/assets/vendors/js/calendar/fullcalendar.min.js') }}"></script>
     <script src="{{ asset('elis/assets/vendors/js/owl-carousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('elis/assets/vendors/js/app/app.js') }}"></script>
+    <script src="{{ asset('elis/assets/vendors/js/bootstrap-select/bootstrap-select.min.js') }}"></script>
+
     <!-- End Page Vendor Js -->
     <!-- Begin Page Snippets -->
     <script src="{{ asset('elis/assets/js/dashboard/db-default.js') }}"></script>

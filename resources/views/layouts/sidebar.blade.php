@@ -29,7 +29,7 @@
             <li><a href="{{ route('application') }}"><i class="la la-desktop"></i><span>Application</span></a></li>
             <li><a href="{{ route('availbility') }}"><i class="la la-check-circle"></i><span>DB Availbility</span></a>
             </li>
-            <li><a href="components-widgets.html"><i class="la la-user"></i><span>User</span></a></li>
+            <li><a href="{{ route('users.index') }}"><i class="la la-user"></i><span>User</span></a></li>
         </ul>
         <span class="heading">Monitoring</span>
         <ul class="list-unstyled">
