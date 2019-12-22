@@ -11,7 +11,7 @@ class AvailbilityController extends Controller
     public function index()
     {
         // Get data availbility 
-        $availbilities = Availbility::with('user', 'rdbms')->get();
+        $availbilities = Availbility::with('user', 'rdbms', 'application')->get();
         return view('availbility', compact('availbilities'));
     }
 

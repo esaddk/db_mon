@@ -44,3 +44,9 @@ Route::get('/application', 'ApplicationController@index')->name('application');
 Route::post('/InsertApplication', 'ApplicationController@InsertApplication')->name('InsertApplication');
 Route::get('/DeleteApplication{id}', 'ApplicationController@destroyApplication')->name('DeleteApplication');
 Route::put('/UpdateApplication{id}', 'ApplicationController@UpdateApplication')->name('UpdateApplication');
+
+// Route Database
+Route::get('/database', 'DatabaseController@index')->name('database');
+Route::post('/InsertDatabase', 'DatabaseController@InsertDatabase')->name('InsertDatabase');
+Route::get('/DeleteDatabase{id}', 'DatabaseController@destroyDatabase')->name('DeleteDatabase');
+Route::put('/UpdateDatabase{id}', 'DatabaseController@UpdateDatabase')->name('UpdateDatabase');

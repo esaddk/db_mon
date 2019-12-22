@@ -31,7 +31,9 @@ class RdbmsController extends Controller
 
         $Rdbms->update([
             // 'id'       => $request->id,
+            'code'      => $request->code,
             'name'      => $request->name,
+            'version'   => $request->version,
 
         ]);
 
