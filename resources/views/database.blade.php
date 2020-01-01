@@ -18,7 +18,7 @@
                                     <th>RDBMS</th>
                                     <th>APPLICATION</th>
                                     <th>DB_NAME</th>
-                                    <th>IP_SERVER</th>
+                                    {{-- <th>IP_SERVER</th> --}}
                                     <th>DESCRIPTION</th>
                                     <th>ACTIONS</th>
                                 </tr>
@@ -33,7 +33,7 @@
                                     <td>{{ $row->rdbms->name }}</td>
                                     <td>{{ $row->application->app_name }}</td>
                                     <td>{{ $row->database_name }}</td>
-                                    <td>{{ $row->ip_server }}</td>
+                                    {{-- <td>{{ $row->ip_server }}</td> --}}
                                     <td>{{ $row->description }}</td>
 
                                     <td class="td-actions">
@@ -118,25 +118,44 @@
                                                     <div class="form-group row d-flex align-items-center mb-5">
                                                         <label class="col-lg-3 form-control-label">Creator</label>
                                                         <div class="col-lg-9">
-                                                            <input name="user_id" type="text" placeholder="placeholder"
-                                                                class="form-control" value="{{$row->user_id}}">
+                                                            {{-- <input name="user_id" type="text" placeholder="placeholder"
+                                                                class="form-control" value="{{$row->user_id}}"> --}}
+                                                            <option value="{{$row->id}}">{{ucfirst($row->name)}}
+                                                            </option>
+                                                            <select class="form-control" name="user_id">
+                                                                @foreach ($users as $user)
+                                                                <option value="{{$user->id}}">{{ucfirst($user->name)}}
+                                                                </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row d-flex align-items-center mb-5">
                                                         <label class="col-lg-3 form-control-label">RDBMS</label>
                                                         <div class="col-lg-9">
-                                                            <input name="rdbms_id" type="text" placeholder="placeholder"
-                                                                class="form-control" value="{{$row->rdbms_id}}">
+                                                            <select class="form-control" name="rdbms_id">
+                                                                <option value="{{ $row->rdbms->id }}">
+                                                                    {{ ucfirst($row->rdbms->code) }}</option>
+                                                                @foreach ($rdbms as $db)
+                                                                <option value="{{$db->id}}">{{ucfirst($db->code)}}
+                                                                </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row d-flex align-items-center mb-5">
                                                         <label class="col-lg-3 form-control-label">Application</label>
                                                         <div class="col-lg-9">
-                                                            <input name="application_id" type="text"
-                                                                placeholder="placeholder" class="form-control"
-                                                                value="{{$row->application_id}}">
+                                                            <select class="form-control" name="application_id">
+                                                                <option value="{{ $row->application->id }}">
+                                                                    {{ ucfirst($row->application->app_name) }}</option>
+                                                                @foreach ($applications as $app)
+                                                                <option value="{{$app->id}}">{{ucfirst($app->app_name)}}
+                                                                </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
 
@@ -149,130 +168,139 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group row d-flex align-items-center mb-5">
+                                                    {{-- <div class="form-group row d-flex align-items-center mb-5">
                                                         <label class="col-lg-3 form-control-label">IP Server</label>
                                                         <div class="col-lg-9">
                                                             <input name="ip_server" type="text"
                                                                 placeholder="placeholder" class="form-control"
                                                                 value="{{$row->ip_server}}">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row d-flex align-items-center mb-5">
-                                                        <label class="col-lg-3 form-control-label">Description</label>
-                                                        <div class="col-lg-9">
-                                                            <input name="description" type="text"
-                                                                placeholder="placeholder" class="form-control"
-                                                                value="{{$row->description}}">
-                                                        </div>
-                                                    </div>
-
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-shadow"
-                                                    data-dismiss="modal">Close</button>
-                                                <button class="btn btn-gradient-01" type="submit">Update Data</button>
-                                            </div>
-                                            </form>
-
-
-                                        </div>
-                                        <!-- /.modal-content -->
-                                    </div>
-                                </div>
-                                {{-- END MODAL EDIT --}}
-
-                                @endforeach
-                                {{-- @endforelse --}}
-                            </tbody>
-                        </table>
-                        <div style="margin-right: 20px;">
-                            <button type="button" class="btn btn-primary ripple mr-1 mb-2"
-                                style="float: right;margin-top: 20px;" data-toggle="modal"
-                                data-target="#modalTambah">Add New
-                            </button>
-                        </div>
-                    </div>
-
-
-
-                    <div id="modalTambah" class="modal fade" style="display: none;" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Add Database</h4>
-                                    <button type="button" class="close" data-dismiss="modal">
-                                        <span aria-hidden="true">×</span>
-                                        <span class="sr-only">close</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form role="form" action="{{ route('InsertDatabase') }}" method="post">
-                                        @csrf
-                                        <div class="form-group row d-flex align-items-center mb-5">
-                                            <label class="col-lg-3 form-control-label">Creator</label>
-                                            <div class="col-lg-9">
-                                                <input name="user_id" type="text" placeholder="placeholder"
-                                                    class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row d-flex align-items-center mb-5">
-                                            <label class="col-lg-3 form-control-label">RDBMS</label>
-                                            <div class="col-lg-9">
-                                                <input name="rdbms_id" type="text" placeholder="placeholder"
-                                                    class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row d-flex align-items-center mb-5">
-                                            <label class="col-lg-3 form-control-label">Application</label>
-                                            <div class="col-lg-9">
-                                                <input name="application_id" type="text" placeholder="placeholder"
-                                                    class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row d-flex align-items-center mb-5">
-                                            <label class="col-lg-3 form-control-label">Database Name</label>
-                                            <div class="col-lg-9">
-                                                <input name="database_name" type="text" placeholder="placeholder"
-                                                    class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row d-flex align-items-center mb-5">
-                                            <label class="col-lg-3 form-control-label">IP Server</label>
-                                            <div class="col-lg-9">
-                                                <input name="ip_server" type="text" placeholder="placeholder"
-                                                    class="form-control">
-                                            </div>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="form-group row d-flex align-items-center mb-5">
                                             <label class="col-lg-3 form-control-label">Description</label>
                                             <div class="col-lg-9">
                                                 <input name="description" type="text" placeholder="placeholder"
-                                                    class="form-control">
+                                                    class="form-control" value="{{$row->description}}">
                                             </div>
                                         </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-shadow" data-dismiss="modal">Close</button>
+                                        <button class="btn btn-gradient-01" type="submit">Update Data</button>
+                                    </div>
+                                    </form>
+
+
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-shadow" data-dismiss="modal">Close</button>
-                                    <button class="btn btn-gradient-01" type="submit">Add Data</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
+                                <!-- /.modal-content -->
                     </div>
-
                 </div>
+                {{-- END MODAL EDIT --}}
 
+                @endforeach
+                {{-- @endforelse --}}
+                </tbody>
+                </table>
+                <div style="margin-right: 20px;">
+                    <button type="button" class="btn btn-primary ripple mr-1 mb-2"
+                        style="float: right;margin-top: 20px;" data-toggle="modal" data-target="#modalTambah">Add New
+                    </button>
+                </div>
+            </div>
+
+
+
+            <div id="modalTambah" class="modal fade" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Add Database</h4>
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">×</span>
+                                <span class="sr-only">close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form" action="{{ route('InsertDatabase') }}" method="post">
+                                @csrf
+                                <div class="form-group row d-flex align-items-center mb-5">
+                                    <label class="col-lg-3 form-control-label">Creator</label>
+                                    <div class="col-lg-9">
+                                        <select class="form-control" name="user_id">
+                                            @foreach ($users as $row)
+                                            <option value="{{$row->id}}">{{ucfirst($row->name)}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row d-flex align-items-center mb-5">
+                                    <label class="col-lg-3 form-control-label">RDBMS</label>
+                                    <div class="col-lg-9">
+                                        <select class="form-control" name="rdbms_id">
+                                            @foreach ($rdbms as $row)
+                                            <option value="{{$row->id}}">{{ucfirst($row->code)}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row d-flex align-items-center mb-5">
+                                    <label class="col-lg-3 form-control-label">Application</label>
+                                    <div class="col-lg-9">
+                                        <select class="form-control" name="application_id">
+                                            @foreach ($applications as $row)
+                                            <option value="{{$row->id}}">{{ucfirst($row->app_name)}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row d-flex align-items-center mb-5">
+                                    <label class="col-lg-3 form-control-label">Database Name</label>
+                                    <div class="col-lg-9">
+                                        <input name="database_name" type="text" placeholder="placeholder"
+                                            class="form-control">
+                                    </div>
+                                </div>
+
+                                {{-- <div class="form-group row d-flex align-items-center mb-5">
+                                    <label class="col-lg-3 form-control-label">IP Server</label>
+                                    <div class="col-lg-9">
+                                        <input name="ip_server" type="text" placeholder="placeholder"
+                                            class="form-control">
+                                    </div>
+                                </div> --}}
+
+                                <div class="form-group row d-flex align-items-center mb-5">
+                                    <label class="col-lg-3 form-control-label">Description</label>
+                                    <div class="col-lg-9">
+                                        <input name="description" type="text" placeholder="placeholder"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-shadow" data-dismiss="modal">Close</button>
+                            <button class="btn btn-gradient-01" type="submit">Add Data</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
             </div>
 
         </div>
 
     </div>
+
+</div>
+
+</div>
 </div>
 
 <script src="{{ asset('elis/assets/vendors/js/datatables/datatables.min.js') }}"></script>

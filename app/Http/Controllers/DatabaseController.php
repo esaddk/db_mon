@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Application;
+use App\User;
+use App\Rdbms;
 use App\Database;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -11,8 +14,11 @@ class DatabaseController extends Controller
     public function index()
     {
         // Get data database 
-        $databases = Database::with('user', 'rdbms')->get();
-        return view('database', compact('databases'));
+        $databases = Database::with('user', 'rdbms', 'application')->get();
+        $users = User::get();
+        $rdbms = Rdbms::get();
+        $applications = Application::get();
+        return view('database', compact('databases', 'users', 'rdbms', 'applications'));
     }
 
     public function InsertDatabase(Request $request)

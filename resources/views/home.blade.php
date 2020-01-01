@@ -28,7 +28,7 @@
                         </div>
                         <div class="media-body align-self-center">
                             <div class="title text-facebook">Oracle</div>
-                            <div class="number">10 Database</div>
+                            <div class="number">24 Database</div>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="media-body align-self-center">
                             <div class="title text-facebook">MySQL</div>
-                            <div class="number">20 Database</div>
+                            <div class="number">18 Database</div>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="media-body align-self-center">
                             <div class="title text-facebook">PostgreSQL</div>
-                            <div class="number">15 Database</div>
+                            <div class="number">10 Database</div>
                         </div>
                     </div>
                 </div>

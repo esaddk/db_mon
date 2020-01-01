@@ -17,7 +17,7 @@
                                     <th>ID</th>
                                     <th>APP_NAME</th>
                                     <th>APP_PIC</th>
-                                    <th>CREATED_AT</th>
+                                    {{-- <th>CREATED_AT</th> --}}
                                     <th>ACTIONS</th>
                                 </tr>
                             </thead>
@@ -31,7 +31,7 @@
                                     <td>{{ $row->id }}</td>
                                     <td>{{ $row->app_name }}</td>
                                     <td>{{ $row->app_pic }}</td>
-                                    <td>{{ $row->created_at }}</td>
+                                    {{-- <td>{{ $row->created_at }}</td> --}}
 
                                     <td class="td-actions">
                                         <a href="{{ route('UpdateApplication',$row->id) }}" data-toggle="modal"

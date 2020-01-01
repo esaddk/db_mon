@@ -7,7 +7,7 @@
             <!-- Sorting -->
             <div class="widget has-shadow">
                 <div class="widget-header bordered no-actions d-flex align-items-center">
-                    <h4>DB Availbility</h4>
+                    <h4>DB Task</h4>
                 </div>
                 <div class="widget-body">
                     <div class="table-responsive">
@@ -15,28 +15,28 @@
                             <thead>
                                 <tr>
                                     <th>CREATOR</th>
-                                    {{-- <th>INSERT_DATE</th> --}}
-                                    <th>DB_DETAILS_ID</th>
-                                    <th>COUNT_PERCENT</th>
-                                    <th><span style="width:100px;">STATUS</span></th>
+                                    <th>INSERT_DATE</th>
+                                    <th>RDBMS</th>
+                                    <th>PROVISIONING</th>
+                                    <th>TROUBLESHOOTING</th>
                                     <th>ACTIONS</th>
                                 </tr>
                             </thead>
                             {{-- @forelse($availbilities as $row) --}}
-                            @foreach ($availbilities as $row)
+                            @foreach ($tasks as $row)
 
 
                             <tbody>
 
                                 <tr>
-                                    <td>{{ $row->user->name }}</td>
-                                    {{-- <td>{{ $row->created_at }}</td> --}}
-                                    <td>{{ $row->rdbms->name }}</td>
-                                    <td>{{ $row->count_percent }}</td>
-                                    <td>{{ $row->status }}</td>
+                                    <td>{{ ucfirst($row->user->name) }}</td>
+                                    <td>{{ $row->created_at }}</td>
+                                    <td>{{ $row->rdbms }}</td>
+                                    <td>{{ $row->provisioning }}</td>
+                                    <td>{{ $row->troubleshooting }}</td>
 
                                     <td class="td-actions">
-                                        <a href="{{ route('UpdateAvailbility',$row->id) }}" data-toggle="modal"
+                                        <a href="{{ route('UpdateTask',$row->id) }}" data-toggle="modal"
                                             data-target="#myModalEdit-{{ $row->id }}"><i
                                                 class=" la la-edit edit"></i></a>
                                         {{-- <a href="{{ route('Delete', [$row->id]) }}"><i
@@ -58,7 +58,7 @@
                                                         .then((willDelete) => {
                                                             if (willDelete) {
                                                                 $.ajax({
-                                                                    url : "{{ url('DeleteAvailbility')}}" + id,
+                                                                    url : "{{ url('DeleteTask')}}" + id,
                                                                     // type : "DELETE",
                                                                     data : {'_method' : 'DELETE',_token: '{!! csrf_token() !!}',},
                                                                     success: function(){
@@ -103,62 +103,66 @@
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Edit Availbility</h4>
+                                                <h4 class="modal-title">Edit Task</h4>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">×</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form role="form" action="{{ route('UpdateAvailbility', $row->id) }}"
+                                                <form role="form" action="{{ route('UpdateTask', $row->id) }}"
                                                     method="post">
                                                     @csrf
                                                     {{ method_field('put') }}
                                                     <div class="form-group row d-flex align-items-center mb-5">
                                                         <label class="col-lg-3 form-control-label">Creator</label>
                                                         <div class="col-lg-9">
+                                                            {{-- <input name="user_id" type="text" placeholder="placeholder"
+                                                                class="form-control" value="{{$row->user_id}}"> --}}
+
                                                             <select class="form-control" name="user_id">
+
                                                                 <option value="{{ $row->user->id }}">
                                                                     {{ ucfirst($row->user->name) }}</option>
-                                                                @foreach ($users as $user)
-                                                                <option value="{{$user->id}}">{{ucfirst($user->name)}}
-                                                                </option>
+                                                                @foreach ($users as $rows)
+                                                                <option value="{{ $rows->id }}">
+                                                                    {{ ucfirst($rows->name) }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row d-flex align-items-center mb-5">
-                                                        <label class="col-lg-3 form-control-label">Database</label>
+                                                        <label class="col-lg-3 form-control-label">RDBMS</label>
                                                         <div class="col-lg-9">
-                                                            <select class="form-control" name="rdbms_id">
-                                                                <option value="{{ $row->rdbms->id }}">
-                                                                    {{ ucfirst($row->rdbms->code) }}</option>
-                                                                @foreach ($rdbms as $db)
-                                                                <option value="{{$db->id}}">{{ucfirst($db->code)}}
-                                                                </option>
-                                                                @endforeach
+                                                            {{-- <input name="rdbms" type="text" placeholder="placeholder"
+                                                                class="form-control" value="{{$row->rdbms}}"> --}}
+                                                            <select name="rdbms" class="custom-select form-control">
+                                                                <option>{{$row->rdbms}}</option>
+                                                                <option>MySQL</option>
+                                                                <option>Oracle</option>
+                                                                <option>PostgreSQL</option>
                                                             </select>
+
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row d-flex align-items-center mb-5">
-                                                        <label class="col-lg-3 form-control-label">Count Percent</label>
+                                                        <label class="col-lg-3 form-control-label">PROVISIONING</label>
                                                         <div class="col-lg-9">
-                                                            <input name="count_percent" type="text"
+                                                            <input name="provisioning" type="text"
                                                                 placeholder="placeholder" class="form-control"
-                                                                value="{{$row->count_percent}}">
+                                                                value="{{$row->provisioning}}">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row d-flex align-items-center mb-5">
-                                                        <label class="col-lg-3 form-control-label">Status</label>
+                                                        <label
+                                                            class="col-lg-3 form-control-label">TROUBLESHOOTING</label>
                                                         <div class="col-lg-9">
-                                                            <select name="status" class="custom-select form-control">
-                                                                <option>{{$row->status}}</option>
-                                                                <option>OK</option>
-                                                                <option>NOK</option>
-                                                            </select>
+                                                            <input name="troubleshooting" type="text"
+                                                                placeholder="placeholder" class="form-control"
+                                                                value="{{$row->troubleshooting}}">
                                                         </div>
                                                     </div>
                                             </div>
@@ -189,59 +193,59 @@
                     </div>
 
 
-
+                    {{-- Start Modal Tambah --}}
                     <div id="modalTambah" class="modal fade" style="display: none;" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Add Availbility</h4>
+                                    <h4 class="modal-title">Add Task</h4>
                                     <button type="button" class="close" data-dismiss="modal">
                                         <span aria-hidden="true">×</span>
                                         <span class="sr-only">close</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form role="form" action="{{ route('InsertAvailbility') }}" method="post">
+                                    <form role="form" action="{{ route('InsertTask') }}" method="post">
                                         @csrf
                                         <div class="form-group row d-flex align-items-center mb-5">
                                             <label class="col-lg-3 form-control-label">Creator</label>
                                             <div class="col-lg-9">
+                                                {{-- {!! Form::Label('item', 'Item:') !!} --}}
+
                                                 <select class="form-control" name="user_id">
-                                                    @foreach ($users as $user)
-                                                    <option value="{{$user->id}}">{{ucfirst($user->name)}}
+                                                    @foreach ($users as $row)
+                                                    <option value="{{$row->id}}">{{ucfirst($row->name)}}
                                                     </option>
                                                     @endforeach
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row d-flex align-items-center mb-5">
+                                            <label class="col-lg-3 form-control-label">RDBMS</label>
+                                            <div class="col-lg-9">
+                                                <select name="rdbms" class="custom-select form-control">
+                                                    <option>MySQL</option>
+                                                    <option>Oracle</option>
+                                                    <option>PostgreSQL</option>
                                                 </select>
                                             </div>
                                         </div>
 
                                         <div class="form-group row d-flex align-items-center mb-5">
-                                            <label class="col-lg-3 form-control-label">Database</label>
+                                            <label class="col-lg-3 form-control-label">PROVISIONING</label>
                                             <div class="col-lg-9">
-                                                <select class="form-control" name="rdbms_id">
-                                                    @foreach ($rdbms as $db)
-                                                    <option value="{{$db->id}}">{{ucfirst($db->code)}}
-                                                    </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row d-flex align-items-center mb-5">
-                                            <label class="col-lg-3 form-control-label">Count Percent</label>
-                                            <div class="col-lg-9">
-                                                <input name="count_percent" type="text" placeholder="presentase"
+                                                <input name="provisioning" type="text" placeholder="placeholder"
                                                     class="form-control">
                                             </div>
                                         </div>
 
                                         <div class="form-group row d-flex align-items-center mb-5">
-                                            <label class="col-lg-3 form-control-label">Status</label>
+                                            <label class="col-lg-3 form-control-label">TROUBLESHOOTING</label>
                                             <div class="col-lg-9">
-                                                <select name="status" class="custom-select form-control">
-                                                    <option>OK</option>
-                                                    <option>NOK</option>
-                                                </select>
+                                                <input name="troubleshooting" type="text" placeholder="placeholder"
+                                                    class="form-control">
                                             </div>
                                         </div>
                                 </div>
@@ -253,6 +257,8 @@
                             </div>
                         </div>
                     </div>
+                    {{-- End MOdal tambah --}}
+
 
                 </div>
 

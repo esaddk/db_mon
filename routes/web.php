@@ -32,6 +32,9 @@ Route::get('/availbility', 'AvailbilityController@index')->name('availbility');
 Route::post('/InsertAvailbility', 'AvailbilityController@InsertAvailbility')->name('InsertAvailbility');
 Route::get('/DeleteAvailbility{id}', 'AvailbilityController@destroyAvailbility')->name('DeleteAvailbility');
 Route::put('/UpdateAvailbility{id}', 'AvailbilityController@UpdateAvailbility')->name('UpdateAvailbility');
+Route::get('/report_availbility', 'AvailbilityController@view_report')->name('report_availbility');
+Route::get('/pdf_availbility', 'AvailbilityController@export_pdf')->name('pdf_availbility');
+
 
 // Route RDBMS
 Route::get('/rdbms', 'RdbmsController@index')->name('rdbms');
@@ -50,3 +53,11 @@ Route::get('/database', 'DatabaseController@index')->name('database');
 Route::post('/InsertDatabase', 'DatabaseController@InsertDatabase')->name('InsertDatabase');
 Route::get('/DeleteDatabase{id}', 'DatabaseController@destroyDatabase')->name('DeleteDatabase');
 Route::put('/UpdateDatabase{id}', 'DatabaseController@UpdateDatabase')->name('UpdateDatabase');
+
+// Task
+Route::get('/task', 'TaskController@index')->name('task');
+Route::post('/InsertTask', 'TaskController@InsertTask')->name('InsertTask');
+Route::get('/DeleteTask{id}', 'TaskController@destroyTask')->name('DeleteTask');
+Route::put('/UpdateTask{id}', 'TaskController@UpdateTask')->name('UpdateTask');
+Route::get('/report_task', 'TaskController@view_report')->name('report_task');
+Route::get('/pdf_task', 'TaskController@export_pdf')->name('pdf_task');
