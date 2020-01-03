@@ -34,6 +34,7 @@ class RdbmsController extends Controller
             'code'      => $request->code,
             'name'      => $request->name,
             'version'   => $request->version,
+            'ip_server' => $request->ip_server,
 
         ]);
 

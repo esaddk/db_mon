@@ -11,7 +11,7 @@
                 </div>
                 <div class="widget-body">
                     <div class="table-responsive">
-                        <table id="sorting-table" class="table mb-0">
+                        <table id="sorting-table" class="table mb-0 dataTable no-footer">
                             <thead>
                                 <tr>
                                     <th>CREATOR</th>
@@ -24,13 +24,14 @@
                                 </tr>
                             </thead>
                             {{-- @forelse($databases as $row) --}}
-                            @foreach ($databases as $row)
+
 
 
                             <tbody>
+                                @foreach ($databases as $row)
                                 <tr>
                                     <td>{{ $row->user->name }}</td>
-                                    <td>{{ $row->rdbms->name }}</td>
+                                    <td>{{ $row->rdbms->code }}</td>
                                     <td>{{ $row->application->app_name }}</td>
                                     <td>{{ $row->database_name }}</td>
                                     {{-- <td>{{ $row->ip_server }}</td> --}}
@@ -303,6 +304,8 @@
 </div>
 </div>
 
+<script src="{{ asset('elis/assets/vendors/js/base/jquery.min.js') }}"></script>
+<script src="{{ asset('elis/assets/vendors/js/base/core.min.js') }}"></script>
 <script src="{{ asset('elis/assets/vendors/js/datatables/datatables.min.js') }}"></script>
 <script src="{{ asset('elis/assets/vendors/js/datatables/dataTables.buttons.min.js') }}"></script>
 <script src="{{ asset('elis/assets/vendors/js/datatables/jszip.min.js') }}"></script>

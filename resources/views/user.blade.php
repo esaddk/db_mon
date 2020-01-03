@@ -22,11 +22,11 @@
                                 </tr>
                             </thead>
                             {{-- @forelse($availbilities as $user) --}}
-                            @foreach ($data as $key => $user)
+
 
 
                             <tbody>
-
+                                @foreach ($data as $key => $user)
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $user->name }}</td>

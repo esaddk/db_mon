@@ -22,12 +22,14 @@
             <li class="{{ request()->is('report*') ? 'active' : '' }}"><a href="#dropdown-app"
                     aria-expanded="{{ request()->is('report*') ? 'true' : '' }}" data-toggle="collapse"><i
                         class="la la-puzzle-piece"></i><span>Report</span></a>
+
                 <ul id="dropdown-app" class="collapse list-unstyled pt-0 {{ request()->is('report*') ? 'show' : '' }}">
-                    <li><a href="app-calendar.html">Mapping Crucial Database</a></li>
+                    <li><a class="{{ request()->is('report_crucial*') ? 'active' : '' }}" href="
+                            {{ route('report_crucial') }}">Mapping Crucial Database</a></li>
                     {{-- Database group by env application  --}}
                     <li><a href="app-chat.html">DBA Monthly Report</a></li>
                     {{-- kegiatan summary bulanan DBA Unutk report ke manajemen --}}
-                    <li><a class="{{ request()->is('report*') ? 'active' : '' }}"
+                    <li><a class="{{ request()->is('report_availbility*') ? 'active' : '' }}"
                             href="{{ route('report_availbility') }}">DB Availbility</a></li>
                     {{-- % tase dari dari database group by server --}}
                     <li><a href="app-contact.html">Database Size</a></li>

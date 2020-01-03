@@ -22,11 +22,11 @@
                                 </tr>
                             </thead>
                             {{-- @forelse($availbilities as $row) --}}
-                            @foreach ($applications as $row)
+
 
 
                             <tbody>
-
+                                @foreach ($applications as $row)
                                 <tr>
                                     <td>{{ $row->id }}</td>
                                     <td>{{ $row->app_name }}</td>
@@ -221,6 +221,7 @@
 <script src="{{ asset('elis/assets/vendors/js/datatables/vfs_fonts.js') }}"></script>
 <script src="{{ asset('elis/assets/vendors/js/datatables/buttons.print.min.js') }}"></script>
 <script src="{{ asset('elis/assets/js/components/tables/tables.js') }}"></script>
+<script src="{{ asset('elis/assets/vendors/js/app/app.min.js') }}"></script>
 <!-- End Sorting -->
 
 

@@ -16,23 +16,25 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>CODE</th>
-                                    <th>NAME</th>
+                                    <th>RDBMS</th>
                                     <th>VERSION</th>
+                                    <th>IP SERVER</th>
                                     <th>CREATED_AT</th>
                                     <th>ACTIONS</th>
                                 </tr>
                             </thead>
                             {{-- @forelse($availbilities as $row) --}}
-                            @foreach ($rdbms as $row)
+
 
 
                             <tbody>
-
+                                @foreach ($rdbms as $row)
                                 <tr>
                                     <td>{{ $row->id }}</td>
                                     <td>{{ $row->code }}</td>
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->version }}</td>
+                                    <td>{{ $row->ip_server }}</td>
                                     <td>{{ $row->created_at }}</td>
 
                                     <td class="td-actions">
@@ -132,10 +134,14 @@
                                                     </div>
 
                                                     <div class="form-group row d-flex align-items-center mb-5">
-                                                        <label class="col-lg-3 form-control-label">Database</label>
+                                                        <label class="col-lg-3 form-control-label">RDBMS</label>
                                                         <div class="col-lg-9">
-                                                            <input name="name" type="text" placeholder="placeholder"
-                                                                class="form-control" value="{{$row->name}}">
+                                                            <select name="name" class="custom-select form-control">
+                                                                <option>{{$row->name}}</option>
+                                                                <option>MySQL</option>
+                                                                <option>Oracle</option>
+                                                                <option>PostgreSQL</option>
+                                                            </select>
                                                         </div>
                                                     </div>
 
@@ -144,6 +150,15 @@
                                                         <div class="col-lg-9">
                                                             <input name="version" type="text" placeholder="placeholder"
                                                                 class="form-control" value="{{$row->version}}">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row d-flex align-items-center mb-5">
+                                                        <label class="col-lg-3 form-control-label">IP Server</label>
+                                                        <div class="col-lg-9">
+                                                            <input name="ip_server" type="text"
+                                                                placeholder="placeholder" class="form-control"
+                                                                value="{{$row->ip_server}}">
                                                         </div>
                                                     </div>
 
@@ -198,10 +213,13 @@
                                         </div>
 
                                         <div class="form-group row d-flex align-items-center mb-5">
-                                            <label class="col-lg-3 form-control-label">Name</label>
+                                            <label class="col-lg-3 form-control-label">RDBMS Name</label>
                                             <div class="col-lg-9">
-                                                <input name="name" type="text" placeholder="placeholder"
-                                                    class="form-control">
+                                                <select name="name" class="custom-select form-control">
+                                                    <option>MySQL</option>
+                                                    <option>Oracle</option>
+                                                    <option>PostgreSQL</option>
+                                                </select>
                                             </div>
                                         </div>
 
@@ -209,6 +227,14 @@
                                             <label class="col-lg-3 form-control-label">Version</label>
                                             <div class="col-lg-9">
                                                 <input name="version" type="text" placeholder="placeholder"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row d-flex align-items-center mb-5">
+                                            <label class="col-lg-3 form-control-label">IP Server</label>
+                                            <div class="col-lg-9">
+                                                <input name="ip_server" type="text" placeholder="placeholder"
                                                     class="form-control">
                                             </div>
                                         </div>

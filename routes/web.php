@@ -61,3 +61,7 @@ Route::get('/DeleteTask{id}', 'TaskController@destroyTask')->name('DeleteTask');
 Route::put('/UpdateTask{id}', 'TaskController@UpdateTask')->name('UpdateTask');
 Route::get('/report_task', 'TaskController@view_report')->name('report_task');
 Route::get('/pdf_task', 'TaskController@export_pdf')->name('pdf_task');
+
+// Report
+Route::get('/report_crucial', 'CrucialDatabasesController@view_report')->name('report_crucial');
+Route::get('/pdf_crucial', 'CrucialDatabasesController@export_pdf')->name('pdf_crucial');

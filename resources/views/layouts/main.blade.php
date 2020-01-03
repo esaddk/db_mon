@@ -591,6 +591,7 @@ Author: SAEROX
     <!-- End Page Vendor Js -->
     <!-- Begin Page Snippets -->
     <script src="{{ asset('elis/assets/js/dashboard/db-default.js') }}"></script>
+
     <!-- End Page Snippets -->
 </body>
 

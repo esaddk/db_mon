@@ -23,11 +23,11 @@
                                 </tr>
                             </thead>
                             {{-- @forelse($availbilities as $row) --}}
-                            @foreach ($tasks as $row)
+
 
 
                             <tbody>
-
+                                @foreach ($tasks as $row)
                                 <tr>
                                     <td>{{ ucfirst($row->user->name) }}</td>
                                     <td>{{ $row->created_at }}</td>
@@ -135,15 +135,12 @@
                                                     <div class="form-group row d-flex align-items-center mb-5">
                                                         <label class="col-lg-3 form-control-label">RDBMS</label>
                                                         <div class="col-lg-9">
-                                                            {{-- <input name="rdbms" type="text" placeholder="placeholder"
-                                                                class="form-control" value="{{$row->rdbms}}"> --}}
                                                             <select name="rdbms" class="custom-select form-control">
                                                                 <option>{{$row->rdbms}}</option>
                                                                 <option>MySQL</option>
                                                                 <option>Oracle</option>
                                                                 <option>PostgreSQL</option>
                                                             </select>
-
                                                         </div>
                                                     </div>
 

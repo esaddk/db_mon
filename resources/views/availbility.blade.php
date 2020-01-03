@@ -23,11 +23,11 @@
                                 </tr>
                             </thead>
                             {{-- @forelse($availbilities as $row) --}}
-                            @foreach ($availbilities as $row)
+
 
 
                             <tbody>
-
+                                @foreach ($availbilities as $row)
                                 <tr>
                                     <td>{{ $row->user->name }}</td>
                                     {{-- <td>{{ $row->created_at }}</td> --}}
