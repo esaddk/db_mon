@@ -4,25 +4,38 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use App\User;
-use Barryvdh\DomPDF\Facade as PDF;
+use Request as RequestURL;
 // use Request;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class TaskController extends Controller
 {
     public function view_report()
     {
-        // Get data task 
-        $tasks = Task::with('user')->get();
-        return view('report.db_task', compact('tasks'));
+
+        $tasks = DB::table('tasks')
+            ->select('rdbms', DB::raw('sum(provisioning) as provisioning , 
+                                       sum(troubleshooting) as troubleshooting, 
+                                       MONTHNAME(created_at) as month'))
+            ->groupBy('rdbms', DB::raw('MONTHNAME(created_at)'))
+            ->get();
+
+        return view('report.dba_monthly', compact('tasks'));
     }
 
     public function export_pdf()
     {
         // Get data task 
-        $tasks = Task::with('user')->get();
-        $url = Request::fullUrl();
+        $tasks = DB::table('tasks')
+            ->select('rdbms', DB::raw('sum(provisioning) as provisioning , 
+                                       sum(troubleshooting) as troubleshooting, 
+                                       MONTHNAME(created_at) as month'))
+            ->groupBy('rdbms', DB::raw('MONTHNAME(created_at)'))
+            ->get();
+        $url = RequestURL::fullUrl();
         // return view('report.db_task', compact('tasks'));
         $pdf = PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
             ->loadView('export.pdf_task', compact('tasks', 'url'));

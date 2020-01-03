@@ -24,21 +24,24 @@
                         class="la la-puzzle-piece"></i><span>Report</span></a>
 
                 <ul id="dropdown-app" class="collapse list-unstyled pt-0 {{ request()->is('report*') ? 'show' : '' }}">
-                    <li><a class="{{ request()->is('report_crucial*') ? 'active' : '' }}" href="
-                            {{ route('report_crucial') }}">Mapping Crucial Database</a></li>
+                    <li><a class="{{ request()->is('report_crucial*') ? 'active' : '' }}"
+                            href="{{ route('report_crucial') }}">Mapping Crucial Database</a></li>
                     {{-- Database group by env application  --}}
-                    <li><a href="app-chat.html">DBA Monthly Report</a></li>
+                    <li><a class="{{ request()->is('report_task*') ? 'active' : '' }}"
+                            href="{{ route('report_task') }}">DBA Monthly Report</a></li>
                     {{-- kegiatan summary bulanan DBA Unutk report ke manajemen --}}
                     <li><a class="{{ request()->is('report_availbility*') ? 'active' : '' }}"
                             href="{{ route('report_availbility') }}">DB Availbility</a></li>
                     {{-- % tase dari dari database group by server --}}
-                    <li><a href="app-contact.html">Database Size</a></li>
-                    {{-- order database size group by rdbms type --}}
-                    <li><a href="app-contact.html">MySQL Object</a></li>{{-- ordering mysql object size --}}
-                    <li><a href="app-contact.html">Oracle Object</a></li>{{-- ordering oracle object size --}}
-                    <li><a href="app-contact.html">PostgreSQL Object</a></li>{{-- ordering PostgreSQL object size --}}
-                </ul>
-            </li>
+                    {{-- <li><a class="{{ request()->is('report_db_size*') ? 'active' : '' }}"
+                    href="{{ route('report_db_size') }}">Database Size</a>
+            </li> --}}
+            {{-- order database size group by rdbms type --}}
+            <li><a href="app-contact.html">MySQL Object</a></li>{{-- ordering mysql object size --}}
+            <li><a href="app-contact.html">Oracle Object</a></li>{{-- ordering oracle object size --}}
+            <li><a href="app-contact.html">PostgreSQL Object</a></li>{{-- ordering PostgreSQL object size --}}
+        </ul>
+        </li>
         </ul>
     </nav>
     <!-- End Side Navbar -->
