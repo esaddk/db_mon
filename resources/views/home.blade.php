@@ -6,7 +6,7 @@
     <div class="row">
         <div class="page-header">
             <div class="d-flex align-items-center">
-                <h2 class="page-header-title">Dashboard</h2>
+                <h2 class="page-header-title">Count Database</h2>
                 <div>
                     <div class="page-header-tools">
                         {{-- <a class="btn btn-gradient-01" href="#">Add Widget</a> --}}
@@ -28,7 +28,7 @@
                         </div>
                         <div class="media-body align-self-center">
                             <div class="title text-facebook">Oracle</div>
-                            <div class="number">24 Database</div>
+                            <div class="number">{{($count_oracle)}} Database</div>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="media-body align-self-center">
                             <div class="title text-facebook">MySQL</div>
-                            <div class="number">18 Database</div>
+                            <div class="number">{{($count_mysql)}} Database</div>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="media-body align-self-center">
                             <div class="title text-facebook">PostgreSQL</div>
-                            <div class="number">10 Database</div>
+                            <div class="number">{{($count_postgresql)}} Database</div>
                         </div>
                     </div>
                 </div>
@@ -71,98 +71,229 @@
         <!-- End Linkedin -->
     </div>
     <!-- End Row -->
+
+
+    <div class="row">
+        <div class="page-header">
+            <div class="d-flex align-items-center">
+                <h2 class="page-header-title">Crucial Database</h2>
+                <div>
+                    <div class="page-header-tools">
+                        {{-- <a class="btn btn-gradient-01" href="#">Add Widget</a> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row flex-row">
+        <div class="col-xl-4 col-md-6">
+
+            <div class="widget widget-05 has-shadow">
+                <div class="widget-body no-padding hidden">
+                    <div class="author-name">
+                        ORACLE
+                        <span>Crucial Database</span>
+                    </div>
+
+                    <div class="social-stats">
+                        <div class="row d-flex justify-content-between">
+                            <div class="col-4 text-center">
+                                <i class="la la-database followers"></i>
+                                <div class="counter" style="font-size: 1.1rem;font-weight: 600;">
+                                    {{$name_oracle[0]->database_name}}</div>
+                                <div class="heading" style="font-size: 0.8rem;">DB_NAME</div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <i class="la la-exclamation-triangle dribbble"></i>
+                                <div class="counter" style="font-size: 1.1rem;font-weight: 600;">
+                                    {{$crucial_oracle[0]->crucial_level}}</div>
+                                <div class="heading" style="font-size: 0.8rem;">CRITICAL_LEVEL</div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <i class="la la-tasks behance"></i>
+                                <div class="counter" style="font-size: 1.1rem;font-weight: 600;">
+                                    {{$crucial_oracle[0]->size}} %</div>
+                                <div class="heading" style="font-size: 0.8rem;">SPACE USAGE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions text-center">
+                        <a href="{{ route('database') }}" class="btn btn-gradient-01">View DB Details</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+
+            <div class="widget widget-05 has-shadow">
+                <div class="widget-body no-padding hidden">
+                    <div class="author-name">
+                        MYSQL
+                        <span>Crucial Database</span>
+                    </div>
+
+                    <div class="social-stats">
+                        <div class="row d-flex justify-content-between">
+                            <div class="col-4 text-center">
+                                <i class="la la-database followers"></i>
+                                <div class="counter" style="font-size: 1.1rem;font-weight: 600;">
+                                    {{$name_mysql[0]->database_name}}</div>
+                                <div class="heading" style="font-size: 0.8rem;">DB_NAME</div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <i class="la la-exclamation-triangle dribbble"></i>
+                                <div class="counter" style="font-size: 1.1rem;font-weight: 600;">
+                                    {{$crucial_mysql[0]->crucial_level}}</div>
+                                <div class="heading" style="font-size: 0.8rem;">CRITICAL_LEVEL</div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <i class="la la-tasks behance"></i>
+                                <div class="counter" style="font-size: 1.1rem;font-weight: 600;">
+                                    {{$crucial_mysql[0]->size}} %</div>
+                                <div class="heading" style="font-size: 0.8rem;">SPACE USAGE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions text-center">
+                        <a href="{{ route('database') }}" class="btn btn-gradient-01">View DB Details</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+
+            <div class="widget widget-05 has-shadow">
+                <div class="widget-body no-padding hidden">
+                    <div class="author-name">
+                        POSTGRESQL
+                        <span>Crucial Database</span>
+                    </div>
+                    <div class="social-stats">
+                        <div class="row d-flex justify-content-between">
+                            <div class="col-4 text-center">
+                                <i class="la la-database followers"></i>
+                                <div class="counter" style="font-size: 1.1rem;font-weight: 600;">
+                                    {{$name_postgresql[0]->database_name}}</div>
+                                <div class="heading" style="font-size: 0.8rem;">DB_NAME</div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <i class="la la-exclamation-triangle dribbble"></i>
+                                <div class="counter" style="font-size: 1.1rem;font-weight: 600;">
+                                    {{$crucial_postgresql[0]->crucial_level}}</div>
+                                <div class="heading" style="font-size: 0.8rem;">CRITICAL_LEVEL</div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <i class="la la-tasks behance"></i>
+                                <div class="counter" style="font-size: 1.1rem;font-weight: 600;">
+                                    {{$crucial_postgresql[0]->size}} %</div>
+                                <div class="heading" style="font-size: 0.8rem;">SPACE USAGE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions text-center">
+                        <a href="{{ route('database') }}" class="btn btn-gradient-01">View DB Details</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Row -->
+
+    <div class="row">
+        <div class="page-header">
+            <div class="d-flex align-items-center">
+                <h2 class="page-header-title">Task DBA 2020</h2>
+                <div>
+                    <div class="page-header-tools">
+                        {{-- <a class="btn btn-gradient-01" href="#">Add Widget</a> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Begin Row -->
     <div class="row flex-row">
-        <div class="col-xl-12 col-md-6">
-            <!-- Begin Widget 09 -->
+        <div class="col-xl-12 col-md-12">
+
             <div class="widget widget-09 has-shadow">
-                <!-- Begin Widget Header -->
+
                 <div class="widget-header d-flex align-items-center">
-                    <h2>DBA TASK</h2>
+                    {{-- <h2>Delivered Orders</h2>
                     <div class="widget-options">
-                        {{-- <button t  ype="button" class="btn btn-shadow">View all</button> --}}
-                    </div>
-                </div>
-                <!-- End Widget Header -->
-                <!-- Begin Widget Body -->
-                <div class="widget-body">
-                    <div class="row">
-                        <div class=" col-12 no-padding">
-                            <div>
-                                <canvas id="orders"></canvas>
+                        <div class="dropdown">
+                            <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                class="dropdown-toggle">
+                                <i class="la la-circle-o-notch"></i>
+                            </button>
+                            <div class="dropdown-menu" x-placement="bottom-start"
+                                style="display: none; position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 35px, 0px);">
+                                <a href="#" class="dropdown-item">
+                                    <i class="la la-history"></i>History
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="la la-bell-slash"></i>Disable Alerts
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="la la-edit"></i>Edit Widget
+                                </a>
+                                <a href="#" class="dropdown-item faq">
+                                    <i class="la la-question-circle"></i>FAQ
+                                </a>
                             </div>
                         </div>
-                        {{-- <div class="col-xl-2 col-12 d-flex flex-column my-auto no-padding text-center">
-                            <div class="new-orders">
-                                <div class="title">New Orders</div>
-                                <div class="circle-orders">
-                                    <div class="percent-orders"></div>
-                                </div>
-                            </div>
-                            <div class="some-stats mt-5">
-                                <div class="title">Total Delivered</div>
-                                <div class="number text-blue">856</div>
-                            </div>
-                            <div class="some-stats mt-3">
-                                <div class="title">Total Estimated</div>
-                                <div class="number text-blue">297</div>
-                            </div>
-                        </div> --}}
-                    </div>
-                </div>
-
-
-            </div>
-            <!-- End Widget 09 -->
-        </div>
-    </div>
-    <!-- End Row -->
-
-    <div class="row flex-row">
-        <div class="col-xl-12 col-md-6">
-            <!-- Begin Widget 09 -->
-            <div class="widget widget-09 has-shadow">
-                <!-- Begin Widget Header -->
-                <div class="widget-header d-flex align-items-center">
-                    <h2>Delivered Orders</h2>
-                    {{-- <div class="widget-options">
-                        <button type="button" class="btn btn-shadow">View all</button>
                     </div> --}}
                 </div>
-                <!-- End Widget Header -->
-                <!-- Begin Widget Body -->
+
+
                 <div class="widget-body">
                     <div class="row">
-                        <div class="col-xl-10 col-12 no-padding">
-                            {{-- <div>
-                                <canvas id="orders"></canvas>
-                            </div> --}}
-                        </div>
-                        {{-- <div class="col-xl-2 col-12 d-flex flex-column my-auto no-padding text-center">
-                            <div class="new-orders">
-                                <div class="title">New Orders</div>
-                                <div class="circle-orders">
-                                    <div class="percent-orders"></div>
+                        {{-- <div class="col-xl-12 col-12 d-flex flex-column my-auto no-padding text-center">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="some-stats mb-4">
+                                        <div class="title">Total Provisioning</div>
+                                        <div class="number text-secondary">856</div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="some-stats mb-4">
+                                        <div class="title">Total Troubleshooting</div>
+                                        <div class="number text-secondary">297</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="some-stats mt-5">
-                                <div class="title">Total Delivered</div>
-                                <div class="number text-blue">856</div>
-                            </div>
-                            <div class="some-stats mt-3">
-                                <div class="title">Total Estimated</div>
-                                <div class="number text-blue">297</div>
-                            </div>
                         </div> --}}
+                        <div class="col-xl-12 col-12 p-0">
+                            <div>
+                                <div class="chartjs-size-monitor"
+                                    style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                                    <div class="chartjs-size-monitor-expand"
+                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0">
+                                        </div>
+                                    </div>
+                                    <div class="chartjs-size-monitor-shrink"
+                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                        <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                                    </div>
+                                </div>
+                                <canvas id="orders" width="1072" height="536" class="chartjs-render-monitor"
+                                    style="display: block; height: 268px; width: 536px;"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-
             </div>
-            <!-- End Widget 09 -->
+
         </div>
     </div>
     <!-- End Row -->
+
 
 
 </div>

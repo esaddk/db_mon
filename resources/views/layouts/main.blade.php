@@ -591,6 +591,91 @@ Author: SAEROX
     <!-- End Page Vendor Js -->
     <!-- Begin Page Snippets -->
     <script src="{{ asset('elis/assets/js/dashboard/db-default.js') }}"></script>
+    <script>
+        function callAjax(){
+        }
+
+        
+
+        $(document).ready(function(){
+    
+     
+            $.ajax({
+            type:"GET",
+            url:"chartTask",
+            success:function(result){
+                var ctx = document.getElementById("orders").getContext('2d');
+                var myChart = new Chart(ctx, {
+		type: 'roundedBar',
+		data: {
+			labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+			datasets: [{
+				label: 'Provisioning',
+				data: result[0],
+				borderColor: "#fff",
+				backgroundColor: "#5d5386",
+				hoverBackgroundColor: "#483d77"
+			}, {
+				label: 'Troubleshooting',
+				data: result[1],
+				borderColor: "#fff",
+				backgroundColor: "#e4e8f0",
+				hoverBackgroundColor: "#dde1e9"
+			}]
+		},
+		options: {
+			responsive: true,
+			barRoundness: 1,
+			tooltips: {
+				backgroundColor: 'rgba(47, 49, 66, 0.8)',
+				titleFontSize: 13,
+				titleFontColor: '#fff',
+				caretSize: 0,
+				cornerRadius: 4,
+				xPadding: 5,
+				displayColors: false,
+				yPadding: 5,
+			},
+			legend: {
+				display: true,
+				position: 'bottom',
+				labels: {
+					fontColor: "#2e3451",
+					usePointStyle: true,
+					padding: 50,
+					fontSize: 13
+				}
+			},
+			scales: {
+				xAxes: [{
+					barThickness: 20,
+					stacked: false,
+					gridLines: {
+						drawBorder: false,
+						display: false
+					},
+					ticks: {
+						display: true
+					}
+				}],
+				yAxes: [{
+					stacked: false,
+					gridLines: {
+						drawBorder: false,
+						display: false
+					},
+					ticks: {
+						display: false
+					}
+				}]
+			}
+		}
+    });
+            }});
+	
+        });
+        
+    </script>
 
     <!-- End Page Snippets -->
 </body>

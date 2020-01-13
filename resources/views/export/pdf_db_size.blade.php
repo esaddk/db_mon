@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>LAPORAN AVAILBILITY</title>
+    <title>LAPORAN SIZE DATABASE</title>
     <style>
         .footer .page-number:after {
             content: counter(page);
@@ -97,47 +97,92 @@
     </div>
     <hr>
     <div style="">
-        <h5>Tanggal Cetak : {{($today)}}</h5>
-        <h5 style="margin-top:-30px">No : RPT/01/002</h5>
-        <h5 style="margin-top:-30px">Perihal : Laporan Availbilty</h5>
+        <h5>Tanggal Cetak : 30/12/2019</h5>
+        <h5 style="margin-top:-30px">No : RPT/05/002</h5>
+        <h5 style="margin-top:-30px">Perihal : Laporan Size Database</h5>
     </div>
 
 
     <div class="page">
+        <h4 style="text-align:center">MySQL</h4>
         <table class="layout display responsive-table">
             <thead style="background-color:bisque;">
                 <tr>
-                    <th>CREATOR</th>
-                    <th>INSERT_DATE</th>
-                    <th>RDBMS</th>
-                    <th>Version</th>
-                    <th>IP SERVER</th>
-                    <th>COUNT_PERCENT</th>
-                    <th><span style="width:100px;">STATUS</span></th>
+                    <th>No</th>
+                    <th>Date</th>
+                    <th>DB_Name</th>
+                    <th>Size</th>
                 </tr>
             </thead>
-            @foreach ($availbilities as $row)
             <tbody>
+                <?php $count = 1; ?>
+                @foreach ($db_size as $row)
+                @if($row->database->rdbms->name == 'MySQL')
                 <tr>
-                    <td>{{ $row->user->name }}</td>
-                    <td>{{ $row->created_at->format('d/m/Y') }}</td>
-                    <td>{{ $row->rdbms->name }}</td>
-                    <td>{{ $row->rdbms->version }}</td>
-                    <td>{{ $row->rdbms->ip_server }}</td>
-                    <td>{{ $row->count_percent }}</td>
-                    <td>{{ $row->status }}</td>
+                    <td>{{$count}}</td>
+                    <td>{{ $row->created_at }}</td>
+                    <td>{{ $row->database->database_name }}</td>
+                    <td>{{ $row->size }} Mb</td>
                 </tr>
+                <?php $count++; ?>
+                @endif
                 @endforeach
             </tbody>
-
         </table>
-
-
+        <h4 style="text-align:center">Oracle</h4>
+        <table class="layout display responsive-table">
+            <thead style="background-color:bisque;">
+                <tr>
+                    <th>No</th>
+                    <th>Date</th>
+                    <th>DB_Name</th>
+                    <th>Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $count = 1; ?>
+                @foreach ($db_size as $row)
+                @if($row->database->rdbms->name == 'Oracle')
+                <tr>
+                    <td>{{$count}}</td>
+                    <td>{{ $row->created_at }}</td>
+                    <td>{{ $row->database->database_name }}</td>
+                    <td>{{ $row->size }} Mb</td>
+                </tr>
+                <?php $count++; ?>
+                @endif
+                @endforeach
+            </tbody>
+        </table>
+        <h4 style="text-align:center">PostgreSQL</h4>
+        <table class="layout display responsive-table">
+            <thead style="background-color:bisque;">
+                <tr>
+                    <th>No</th>
+                    <th>Date</th>
+                    <th>DB_Name</th>
+                    <th>Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $count = 1; ?>
+                @foreach ($db_size as $row)
+                @if($row->database->rdbms->name == 'PostgreSQL')
+                <tr>
+                    <td>{{$count}}</td>
+                    <td>{{ $row->created_at }}</td>
+                    <td>{{ $row->database->database_name }}</td>
+                    <td>{{ $row->size }} Mb</td>
+                </tr>
+                <?php $count++; ?>
+                @endif
+                @endforeach
+            </tbody>
+        </table>
     </div>
     <footer>
-        {{-- <p style="margin-bottom:-50px">
-            https://ourcodeworld.com/articles/read/687/how-to-configure-a-header-and-footer-in-dompdf</p> --}}
-        <p>{{$url}}</p>
+        {{-- <p>{{$url}}</p> --}}
+        <p>http://localhost:8000/crucial_database</p>
         <div style="float:right;">
             <span class="page-number">Page 1</span>
         </div>

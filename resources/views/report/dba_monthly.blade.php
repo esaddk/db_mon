@@ -23,12 +23,10 @@
                             </thead>
                             {{-- @forelse($availbilities as $row) --}}
 
-
-
                             <tbody>
                                 @foreach ($tasks as $row)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{$loop->iteration}}</td>
                                     <td>{{$row->month}}</td>
                                     <td>{{$row->rdbms}}</td>
                                     <td>{{$row->provisioning}}</td>

@@ -15,8 +15,10 @@
                             <thead>
                                 <tr>
                                     <th>CREATOR</th>
-                                    {{-- <th>INSERT_DATE</th> --}}
-                                    <th>DB_DETAILS_ID</th>
+                                    <th>INSERT_DATE</th>
+                                    <th>RDBMS</th>
+                                    <th>RDBMS CODE</th>
+                                    <th>IP SERVER</th>
                                     <th>COUNT_PERCENT</th>
                                     <th><span style="width:100px;">STATUS</span></th>
                                     <th>ACTIONS</th>
@@ -30,8 +32,10 @@
                                 @foreach ($availbilities as $row)
                                 <tr>
                                     <td>{{ $row->user->name }}</td>
-                                    {{-- <td>{{ $row->created_at }}</td> --}}
+                                    <td>{{ $row->created_at }}</td>
                                     <td>{{ $row->rdbms->name }}</td>
+                                    <td>{{ $row->rdbms->code }}</td>
+                                    <td>{{ $row->rdbms->ip_server }}</td>
                                     <td>{{ $row->count_percent }}</td>
                                     <td>{{ $row->status }}</td>
 
@@ -220,7 +224,8 @@
                                             <div class="col-lg-9">
                                                 <select class="form-control" name="rdbms_id">
                                                     @foreach ($rdbms as $db)
-                                                    <option value="{{$db->id}}">{{ucfirst($db->code)}}
+                                                    <option value="{{$db->id}}">{{ucfirst($db->code)}} |
+                                                        {{($db->ip_server)}}
                                                     </option>
                                                     @endforeach
                                                 </select>
@@ -230,7 +235,7 @@
                                         <div class="form-group row d-flex align-items-center mb-5">
                                             <label class="col-lg-3 form-control-label">Count Percent</label>
                                             <div class="col-lg-9">
-                                                <input name="count_percent" type="text" placeholder="presentase"
+                                                <input name="count_percent" type="number" placeholder="presentase"
                                                     class="form-control">
                                             </div>
                                         </div>

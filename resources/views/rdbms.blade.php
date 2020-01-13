@@ -207,15 +207,15 @@
                                         <div class="form-group row d-flex align-items-center mb-5">
                                             <label class="col-lg-3 form-control-label">Kode</label>
                                             <div class="col-lg-9">
-                                                <input name="code" type="text" placeholder="placeholder"
-                                                    class="form-control">
+                                                <input name="code" type="text" placeholder="Kode RDBMS"
+                                                    class="form-control" required>
                                             </div>
                                         </div>
 
                                         <div class="form-group row d-flex align-items-center mb-5">
                                             <label class="col-lg-3 form-control-label">RDBMS Name</label>
                                             <div class="col-lg-9">
-                                                <select name="name" class="custom-select form-control">
+                                                <select required name="name" class="custom-select form-control">
                                                     <option>MySQL</option>
                                                     <option>Oracle</option>
                                                     <option>PostgreSQL</option>
@@ -226,7 +226,7 @@
                                         <div class="form-group row d-flex align-items-center mb-5">
                                             <label class="col-lg-3 form-control-label">Version</label>
                                             <div class="col-lg-9">
-                                                <input name="version" type="text" placeholder="placeholder"
+                                                <input required name="version" type="text" placeholder="Versi RDBMS"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -234,7 +234,7 @@
                                         <div class="form-group row d-flex align-items-center mb-5">
                                             <label class="col-lg-3 form-control-label">IP Server</label>
                                             <div class="col-lg-9">
-                                                <input name="ip_server" type="text" placeholder="placeholder"
+                                                <input required name="ip_server" type="text" placeholder="IP Server"
                                                     class="form-control">
                                             </div>
                                         </div>

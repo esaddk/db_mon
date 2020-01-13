@@ -201,28 +201,35 @@
                                         <div class="form-group">
                                             <strong>Name:</strong>
                                             {!! Form::text('name', null, array('placeholder' => 'Name','class' =>
-                                            'form-control')) !!}
+                                            'form-control','required')) !!}
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong>Email:</strong>
-                                            {!! Form::text('email', null, array('placeholder' => 'Email','class' =>
-                                            'form-control')) !!}
+                                            {!! Form::email('email', null, array('placeholder' => 'Email','class' =>
+                                            'form-control','required')) !!}
+
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong>Password:</strong>
                                             {!! Form::password('password', array('placeholder' => 'Password','class'
-                                            => 'form-control')) !!}
+                                            => 'form-control','required')) !!}
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong>Confirm Password:</strong>
                                             {!! Form::password('confirm-password', array('placeholder' =>
-                                            'Confirm Password','class' => 'form-control'))
+                                            'Confirm Password','class' => 'form-control','required'))
                                             !!}
                                         </div>
                                     </div>
@@ -231,8 +238,8 @@
                                             <strong>Role:</strong>
                                             <div style="margin-left:-15px" class="col-md-5">
                                                 <div class="dropdown bootstrap-select show-tick show-menu-arrow"><select
-                                                        class="selectpicker show-menu-arrow" name="roles[]" multiple=""
-                                                        tabindex="-98">
+                                                        required class="selectpicker show-menu-arrow" name="roles[]"
+                                                        multiple="" tabindex="-98">
                                                         @foreach ($roles as $row)
                                                         <option value="{{ $row }}">{{ $row}}</option>
                                                         @endforeach

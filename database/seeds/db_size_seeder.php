@@ -16,11 +16,11 @@ class db_size_seeder extends Seeder
     {
         $faker = Faker::create();
         $databaseID = DB::table('databases')->pluck('id');
-        foreach (range(0, 3000) as $i) {
+        foreach (range(0, 51) as $i) {
             DB::table('database_sizes')->insert([
-                'database_id' => $faker->randomElement($databaseID),
-                'size' => $faker->randomFloat(NULL, 100, 200),
-                'created_at' => $faker->dateTimeThisMonth(),
+                'database_id' => $faker->unique()->randomElement($databaseID),
+                'size' => $faker->randomFloat(NULL, 250, 300),
+                'created_at' => '2020-01-04 04:00:49',
             ]);
         }
     }

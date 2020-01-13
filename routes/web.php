@@ -24,6 +24,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/chartTask', 'HomeController@chartTask');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
@@ -65,3 +66,6 @@ Route::get('/pdf_task', 'TaskController@export_pdf')->name('pdf_task');
 // Report
 Route::get('/report_crucial', 'CrucialDatabasesController@view_report')->name('report_crucial');
 Route::get('/pdf_crucial', 'CrucialDatabasesController@export_pdf')->name('pdf_crucial');
+
+Route::get('/report_db_size', 'DatabaseSizeController@view_report')->name('report_db_size');
+Route::get('/pdf_db_size', 'DatabaseSizeController@export_pdf')->name('pdf_db_size');
