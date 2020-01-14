@@ -20,9 +20,11 @@
                         <li class="{{ request()->is('task*') ? 'active' : '' }}"><a href=" {{ route('task') }}"><i
                                                 class="la la-desktop"></i><span>DBA Weekly Task</span></a></li>
                         </li>
+                        @role('admin')
                         <li class="{{ request()->is('users*') ? 'active' : '' }}"><a
                                         href="{{ route('users.index') }}"><i
                                                 class="la la-user"></i><span>User</span></a></li>
+                        @endrole
                         <li class="{{ request()->is('report*') ? 'active' : '' }}"><a href="#dropdown-app"
                                         aria-expanded="{{ request()->is('report*') ? 'true' : '' }}"
                                         data-toggle="collapse"><i class="la la-puzzle-piece"></i><span>Report</span></a>
@@ -43,11 +45,16 @@
                                                         href="{{ route('report_db_size') }}">Database Size</a>
                                         </li>
                                         {{-- order database size group by rdbms type --}}
-                                        <li><a href="app-contact.html">MySQL Object</a></li>
+                                        <li><a class="{{ request()->is('report_mysql_object*') ? 'active' : '' }}"
+                                                        href="{{ route('report_mysql_object') }}">MySQL Object</a></li>
                                         {{-- ordering mysql object size --}}
-                                        <li><a href="app-contact.html">Oracle Object</a></li>
+                                        <li><a class="{{ request()->is('report_oracle_object*') ? 'active' : '' }}"
+                                                        href="{{ route('report_oracle_object') }}">Oracle Object</a>
+                                        </li>
                                         {{-- ordering oracle object size --}}
-                                        <li><a href="app-contact.html">PostgreSQL Object</a></li>
+                                        <li><a class="{{ request()->is('report_postgre_object*') ? 'active' : '' }}"
+                                                        href="{{ route('report_postgre_object') }}">PostgreSQL
+                                                        Object</a></li>
                                         {{-- ordering PostgreSQL object size --}}
                                 </ul>
                         </li>

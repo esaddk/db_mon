@@ -21,5 +21,5 @@ class Database extends Model
         return $this->belongsTo(Application::class);
     }
 
-    protected $fillable = ['user_id', 'rdbms_id', 'application_id', 'database_name', 'ip_server', 'description'];
+    protected $fillable = ['user_id', 'rdbms_id', 'application_id', 'database_name', 'size_alocation', 'description'];
 }

@@ -171,27 +171,9 @@ Author: SAEROX
                                     <a href="#" class="edit-profil"><i class="la la-gear"></i></a>
                                     <img src="elis/assets/img/avatar/avatar-01.png" alt="..." class="rounded-circle">
                                 </li>
-                                {{-- <li>
-                                        <a href="pages-profile.html" class="dropdown-item"> 
-                                            Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="app-mail.html" class="dropdown-item"> 
-                                            Messages
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown-item no-padding-bottom"> 
-                                            Settings
-                                        </a>
-                                    </li>
-                                    <li class="separator"></li>
-                                    <li>
-                                        <a href="pages-faq.html" class="dropdown-item no-padding-top"> 
-                                            Faq
-                                        </a>
-                                    </li> --}}
+                                <li class="welcome" style="text-align: center;">
+                                    <span>Hello {{ ucfirst(Auth::user()->name) }} !</span>
+                                </li>
                                 <li><a rel="nofollow" href="{{ route('logout') }}"
                                         class="dropdown-item logout text-center"><i class="ti-power-off"></i></a></li>
                             </ul>

@@ -16,14 +16,14 @@ class postgre_seeder extends Seeder
 
         $faker = Faker::create();
         $ids = [6, 7];
-        $databaseID = DB::table('databases')->whereIn('id', $ids)->pluck('id');
+        $databaseID = DB::table('databases')->whereIn('rdbms_id', $ids)->pluck('id');
         foreach (range(0, 300) as $i) {
             DB::table('postgre_objects')->insert([
                 'database_id' => $faker->randomElement($databaseID),
                 'object_name' => $faker->unique()->numerify('TBL_###'),
                 'object_type' => $faker->randomElement($array = array('table')),
                 'object_size' => $faker->randomFloat(NULL, 10, 100),
-                'created_at' => '2020-01-04 05:00:49',
+                'created_at' => '2020-01-15 05:00:49',
             ]);
         }
         foreach (range(0, 600) as $i) {
@@ -32,7 +32,7 @@ class postgre_seeder extends Seeder
                 'object_name' => $faker->unique()->numerify('IDX_###'),
                 'object_type' => $faker->randomElement($array = array('index')),
                 'object_size' => $faker->randomFloat(NULL, 500, 900),
-                'created_at' => '2020-01-04 05:00:49',
+                'created_at' => '2020-01-15 05:00:49',
             ]);
         }
         foreach (range(0, 51) as $i) {
@@ -41,7 +41,7 @@ class postgre_seeder extends Seeder
                 'object_name' => $faker->unique()->numerify('TBS_###'),
                 'object_type' => $faker->randomElement($array = array('tablespace')),
                 'object_size' => $faker->randomFloat(NULL, 200, 300),
-                'created_at' => '2020-01-04 05:00:49',
+                'created_at' => '2020-01-15 05:00:49',
             ]);
         }
     }

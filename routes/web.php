@@ -69,3 +69,12 @@ Route::get('/pdf_crucial', 'CrucialDatabasesController@export_pdf')->name('pdf_c
 
 Route::get('/report_db_size', 'DatabaseSizeController@view_report')->name('report_db_size');
 Route::get('/pdf_db_size', 'DatabaseSizeController@export_pdf')->name('pdf_db_size');
+
+Route::get('/report_mysql_object', 'MysqlObjectController@view_report')->name('report_mysql_object');
+Route::get('/pdf_mysql_object', 'MysqlObjectController@export_pdf')->name('pdf_mysql_object');
+
+Route::get('/report_oracle_object', 'OracleObjectController@view_report')->name('report_oracle_object');
+Route::get('/pdf_oracle_object', 'OracleObjectController@export_pdf')->name('pdf_oracle_object');
+
+Route::get('/report_postgre_object', 'PostgreObjectController@view_report')->name('report_postgre_object');
+Route::get('/pdf_postgre_object', 'PostgreObjectController@export_pdf')->name('pdf_postgre_object');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Rdbms;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class RdbmsController extends Controller
 {
@@ -17,6 +18,22 @@ class RdbmsController extends Controller
 
     public function InsertRdbms(Request $request)
     {
+
+        // $request->validate([
+        //     'code' => 'required|unique:rdbms,code',
+        // ]);
+        $validator = Validator::make($request->all(), [
+            'code' => 'required|unique:rdbms,code',
+            'ip_server' => 'required|ipv4'
+        ]);
+
+        if ($validator->fails()) {
+            $message = $validator->errors()->first();
+            // return $message;
+            Alert::error('Error Add Data', '' . $message . '')->persistent("Close");
+            return back();
+        }
+
         Rdbms::create($request->all());
         Alert::success('Data Rdbms Berhasil Ditambahkan')->persistent("Close");
         return back();
@@ -26,6 +43,18 @@ class RdbmsController extends Controller
 
     public function UpdateRdbms(Request $request, $id)
     {
+
+        $validator = Validator::make($request->all(), [
+            // 'code' => 'required|unique:rdbms,code' . $id,
+            'ip_server' => 'required|ipv4'
+        ]);
+
+        if ($validator->fails()) {
+            $message = $validator->errors()->first();
+            // return $message;
+            Alert::error('Error Update Data', '' . $message . '')->persistent("Close");
+            return back();
+        }
 
         $Rdbms = Rdbms::findOrFail($id);
 
