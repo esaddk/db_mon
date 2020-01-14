@@ -44,63 +44,41 @@
                                         <a href="{{ route('users.edit',$user->id) }}" data-toggle="modal"
                                             data-target="#myModalEdit-{{ $user->id }}"><i
                                                 class=" la la-edit edit"></i></a>
-
-                                        {{-- {!! Form::open(['method' => 'DELETE','route' => ['users.destroy',
-                                        $user->id],'style'=>'display:inline']) !!}
-                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                        {!! Form::close() !!} --}}
-                                        <a onclick="deleteData({{ $user->id }})"><i class="la la-close delete"></i></a>
-                                        <script>
-                                            $.ajaxSetup({
-                                                        headers: {
-                                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')                                                        }
-                                                    });
-                                                    function deleteData(id){
-                                                        swal.fire({
-                                                            title: "Are you sure?",
-                                                            text: "Once deleted, you will not be able to recover this imaginary file!",
-                                                            icon: "warning",
-                                                            buttons: true,
-                                                            dangerMode: true,
-                                                        })
-                                                        .then((willDelete) => {
-                                                            if (willDelete) {
-                                                                $.ajax({
-                                                                    url : "{{ url('DeleteUser')}}" + id,
-                                                                    // type : "DELETE",
-                                                                    data : {'_method' : 'DELETE',_token: '{!! csrf_token() !!}',},
-                                                                    success: function(){
-                                                                        localStorage.setItem("swal",
-                                                                        swal.fire({
-                                                                        title: "Success!",
-                                                                        text: "Message sent",
-                                                                        type: "success",
-                                                                        timer: 5000,
-                                                                        showConfirmButton: false
-                                                                        })
-                                                                        );
-                                                                        location.reload();
-                                                                        localStorage.getItem("swal");
-                                                                    },
-                                                                    error : function(){
-                                                                        swal.fire({
-                                                                            title: 'Opps...',
-                                                                            text : 'error deleting data',
-                                                                            type : 'error',
-                                                                            timer : '1500',
-                                                                            
-                                                                        })
-                                                                    }
-                                                                })
-                                                            } else {
-                                                            swal.fire("Your imaginary file is safe!");
-                                                            }
-                                                        });
-                                                    }
-                                        </script>
-
+                                        <button style="border: none;" class="deleteUser" data-userid="{{$user->id}}">
+                                            <i class="la la-close delete"></i></button>
                                     </td>
                                 </tr>
+                                <div id="applicantDeleteModal" class="modal modal-danger fade" tabindex="-1"
+                                    role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true"
+                                    style="display: none;">
+                                    <div class="modal-dialog" style="width:55%;">
+                                        <div class="modal-content">
+                                            <form action="{{route('DeleteUser')}}" method="POST"
+                                                class="remove-record-model">
+                                                {{ method_field('delete') }}
+                                                {{ csrf_field() }}
+
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">×</button>
+                                                    <h4 class="modal-title text-center" id="custom-width-modalLabel">
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4>You Want You Sure Delete This Record?</h4>
+                                                    <input type="hidden" , name="user_id" id="user_id">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default waves-effect"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="submit"
+                                                        class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                                 {{-- @empty
                                 <tr>
                                     <td class="text-center" colspan="7">Tidak ada data transaksi hari ini</td>
@@ -126,14 +104,14 @@
                                                     <div class="form-group">
                                                         <strong>Name:</strong>
                                                         {!! Form::text('name', null, array('placeholder' =>
-                                                        'Name','class' => 'form-control')) !!}
+                                                        'Name','class' => 'form-control','required')) !!}
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                                     <div class="form-group">
                                                         <strong>Email:</strong>
                                                         {!! Form::text('email', null, array('placeholder' =>
-                                                        'Email','class' => 'form-control')) !!}
+                                                        'Email','class' => 'form-control','required')) !!}
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -283,7 +261,13 @@
 <script src="{{ asset('elis/assets/vendors/js/datatables/buttons.print.min.js') }}"></script>
 <script src="{{ asset('elis/assets/js/components/tables/tables.js') }}"></script>
 <!-- End Sorting -->
-
+<script>
+    $(document).on('click','.deleteUser',function(){
+    var userID=$(this).attr('data-userid');
+    $('#user_id').val(userID); 
+    $('#applicantDeleteModal').modal('show'); 
+});
+</script>
 
 
 @endsection

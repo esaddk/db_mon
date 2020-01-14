@@ -39,11 +39,11 @@ class ApplicationController extends Controller
         return back();
     }
 
-    public function destroyApplication($id)
+    public function destroyApplication(Request $request)
     {
-        $Application = Application::find($id);
 
-        $Application->delete();
+        $app_id = $request->input('app_id');
+        $Application = Application::where('id', $app_id)->delete();
         Alert::success('Data Berhasil di hapus')->persistent("Close");
         return back();
     }

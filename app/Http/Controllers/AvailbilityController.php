@@ -108,11 +108,11 @@ class AvailbilityController extends Controller
         return back();
     }
 
-    public function destroyAvailbility($id)
+    public function destroyAvailbility(Request $request)
     {
-        $availbility = Availbility::find($id);
 
-        $availbility->delete();
+        $availbility_id = $request->input('availbility_id');
+        $Availbility = Availbility::where('id', $availbility_id)->delete();
         Alert::success('Data Berhasil di hapus')->persistent("Close");
         return back();
     }

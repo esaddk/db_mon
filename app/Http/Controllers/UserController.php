@@ -158,12 +158,12 @@ class UserController extends Controller
             ->with('success', 'User deleted successfully');
     }
 
-    public function destroyUser($id)
+    public function destroyUser(Request $request)
     {
-        $User = User::find($id);
 
-        $User->delete();
-        // Alert::success('Data Berhasil di hapus')->persistent("Close");
+        $user_id = $request->input('user_id');
+        $User = User::where('id', $user_id)->delete();
+        Alert::success('Data Berhasil di hapus')->persistent("Close");
         return back();
     }
 }

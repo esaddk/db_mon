@@ -45,7 +45,7 @@ class TaskController extends Controller
     public function index()
     {
         // Get data task 
-        $tasks = Task::with('user')->get();
+        $tasks = Task::with('user')->orderBy('created_at', 'desc')->get();
         $users = User::get();
         return view('task', compact('tasks', 'users'));
     }
@@ -75,11 +75,10 @@ class TaskController extends Controller
         return back();
     }
 
-    public function destroyTask($id)
+    public function destroyTask(Request $request)
     {
-        $task = Task::find($id);
-
-        $task->delete();
+        $task_id = $request->input('task_id');
+        $Task = Task::where('id', $task_id)->delete();
         Alert::success('Data Berhasil di hapus')->persistent("Close");
         return back();
     }

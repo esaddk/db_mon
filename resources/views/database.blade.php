@@ -43,60 +43,41 @@
                                         <a href="{{ route('UpdateDatabase',$row->id) }}" data-toggle="modal"
                                             data-target="#myModalEdit-{{ $row->id }}"><i
                                                 class=" la la-edit edit"></i></a>
-                                        {{-- <a href="{{ route('Delete', [$row->id]) }}"><i
-                                            class="la la-close delete"></i></a> --}}
-                                        <a onclick="deleteData({{ $row->id }})"><i class="la la-close delete"></i></a>
-                                        <script>
-                                            $.ajaxSetup({
-                                                        headers: {
-                                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')                                                        }
-                                                    });
-                                                    function deleteData(id){
-                                                        swal.fire({
-                                                            title: "Are you sure?",
-                                                            text: "Once deleted, you will not be able to recover this imaginary file!",
-                                                            icon: "warning",
-                                                            buttons: true,
-                                                            dangerMode: true,
-                                                        })
-                                                        .then((willDelete) => {
-                                                            if (willDelete) {
-                                                                $.ajax({
-                                                                    url : "{{ url('DeleteDatabase')}}" + id,
-                                                                    // type : "DELETE",
-                                                                    data : {'_method' : 'DELETE',_token: '{!! csrf_token() !!}',},
-                                                                    success: function(){
-                                                                        localStorage.setItem("swal",
-                                                                        swal.fire({
-                                                                        title: "Success!",
-                                                                        text: "Message sent",
-                                                                        type: "success",
-                                                                        timer: 5000,
-                                                                        showConfirmButton: false
-                                                                        })
-                                                                        );
-                                                                        location.reload();
-                                                                        localStorage.getItem("swal");
-                                                                    },
-                                                                    error : function(){
-                                                                        swal.fire({
-                                                                            title: 'Opps...',
-                                                                            text : 'error deleting data',
-                                                                            type : 'error',
-                                                                            timer : '1500',
-                                                                            
-                                                                        })
-                                                                    }
-                                                                })
-                                                            } else {
-                                                            swal.fire("Your imaginary file is safe!");
-                                                            }
-                                                        });
-                                                    }
-                                        </script>
-
+                                        <button style="border: none;" class="deleteUser" data-userid="{{$row->id}}">
+                                            <i class="la la-close delete"></i></button>
                                     </td>
                                 </tr>
+                                <div id="applicantDeleteModal" class="modal modal-danger fade" tabindex="-1"
+                                    role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true"
+                                    style="display: none;">
+                                    <div class="modal-dialog" style="width:55%;">
+                                        <div class="modal-content">
+                                            <form action="{{route('DeleteDatabase')}}" method="POST"
+                                                class="remove-record-model">
+                                                {{ method_field('delete') }}
+                                                {{ csrf_field() }}
+
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">×</button>
+                                                    <h4 class="modal-title text-center" id="custom-width-modalLabel">
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4>You Want You Sure Delete This Record?</h4>
+                                                    <input type="hidden" , name="database_id" id="database_id">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default waves-effect"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="submit"
+                                                        class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                                 {{-- @empty
                                 <tr>
                                     <td class="text-center" colspan="7">Tidak ada data transaksi hari ini</td>
@@ -166,7 +147,7 @@
                                                         <label class="col-lg-3 form-control-label">Database</label>
                                                         <div class="col-lg-9">
                                                             <input name="database_name" type="text"
-                                                                placeholder="placeholder" class="form-control"
+                                                                placeholder="Nama Database" class="form-control"
                                                                 value="{{$row->database_name}}" required>
                                                         </div>
                                                     </div>
@@ -176,8 +157,8 @@
                                                             Alocation</label>
                                                         <div class="col-lg-9">
                                                             <input name="size_alocation" type="text"
-                                                                placeholder="placeholder" class="form-control"
-                                                                value="{{$row->size_alocation}}" required>
+                                                                placeholder="Alokasi Ukuran DB (dalam MB)"" class="
+                                                                form-control" value="{{$row->size_alocation}}" required>
                                                         </div>
                                                     </div>
 
@@ -185,7 +166,7 @@
                                                         <label class="col-lg-3 form-control-label">Description</label>
                                                         <div class="col-lg-9">
                                                             <input name="description" type="text"
-                                                                placeholder="placeholder" class="form-control"
+                                                                placeholder="Deskripsi" class="form-control"
                                                                 value="{{$row->description}}">
                                                         </div>
                                                     </div>
@@ -285,8 +266,9 @@
                                         <div class="form-group row d-flex align-items-center mb-5">
                                             <label class="col-lg-3 form-control-label">Size Alocation</label>
                                             <div class="col-lg-9">
-                                                <input name="size_alocation" type="text" placeholder="Alokasi Ukuran DB"
-                                                    class="form-control" required>
+                                                <input name="size_alocation" type="text"
+                                                    placeholder="Alokasi Ukuran DB (dalam MB)" class="form-control"
+                                                    required>
                                             </div>
                                         </div>
 
@@ -327,7 +309,13 @@
 <script src="{{ asset('elis/assets/vendors/js/datatables/buttons.print.min.js') }}"></script>
 <script src="{{ asset('elis/assets/js/components/tables/tables.js') }}"></script>
 <!-- End Sorting -->
-
+<script>
+    $(document).on('click','.deleteUser',function(){
+    var userID=$(this).attr('data-userid');
+    $('#database_id').val(userID); 
+    $('#applicantDeleteModal').modal('show'); 
+});
+</script>
 
 
 @endsection

@@ -39,60 +39,41 @@
                                         <a href="{{ route('UpdateTask',$row->id) }}" data-toggle="modal"
                                             data-target="#myModalEdit-{{ $row->id }}"><i
                                                 class=" la la-edit edit"></i></a>
-                                        {{-- <a href="{{ route('Delete', [$row->id]) }}"><i
-                                            class="la la-close delete"></i></a> --}}
-                                        <a onclick="deleteData({{ $row->id }})"><i class="la la-close delete"></i></a>
-                                        <script>
-                                            $.ajaxSetup({
-                                                        headers: {
-                                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')                                                        }
-                                                    });
-                                                    function deleteData(id){
-                                                        swal.fire({
-                                                            title: "Are you sure?",
-                                                            text: "Once deleted, you will not be able to recover this imaginary file!",
-                                                            icon: "warning",
-                                                            buttons: true,
-                                                            dangerMode: true,
-                                                        })
-                                                        .then((willDelete) => {
-                                                            if (willDelete) {
-                                                                $.ajax({
-                                                                    url : "{{ url('DeleteTask')}}" + id,
-                                                                    // type : "DELETE",
-                                                                    data : {'_method' : 'DELETE',_token: '{!! csrf_token() !!}',},
-                                                                    success: function(){
-                                                                        localStorage.setItem("swal",
-                                                                        swal.fire({
-                                                                        title: "Success!",
-                                                                        text: "Message sent",
-                                                                        type: "success",
-                                                                        timer: 5000,
-                                                                        showConfirmButton: false
-                                                                        })
-                                                                        );
-                                                                        location.reload();
-                                                                        localStorage.getItem("swal");
-                                                                    },
-                                                                    error : function(){
-                                                                        swal.fire({
-                                                                            title: 'Opps...',
-                                                                            text : 'error deleting data',
-                                                                            type : 'error',
-                                                                            timer : '1500',
-                                                                            
-                                                                        })
-                                                                    }
-                                                                })
-                                                            } else {
-                                                            swal.fire("Your imaginary file is safe!");
-                                                            }
-                                                        });
-                                                    }
-                                        </script>
-
+                                        <button style="border: none;" class="deleteUser" data-userid="{{$row->id}}">
+                                            <i class="la la-close delete"></i></button>
                                     </td>
                                 </tr>
+                                <div id="applicantDeleteModal" class="modal modal-danger fade" tabindex="-1"
+                                    role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true"
+                                    style="display: none;">
+                                    <div class="modal-dialog" style="width:55%;">
+                                        <div class="modal-content">
+                                            <form action="{{route('DeleteTask')}}" method="POST"
+                                                class="remove-record-model">
+                                                {{ method_field('delete') }}
+                                                {{ csrf_field() }}
+
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">×</button>
+                                                    <h4 class="modal-title text-center" id="custom-width-modalLabel">
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4>You Want You Sure Delete This Record?</h4>
+                                                    <input type="hidden" , name="task_id" id="task_id">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default waves-effect"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="submit"
+                                                        class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                                 {{-- @empty
                                 <tr>
                                     <td class="text-center" colspan="7">Tidak ada data transaksi hari ini</td>
@@ -147,8 +128,8 @@
                                                     <div class="form-group row d-flex align-items-center mb-5">
                                                         <label class="col-lg-3 form-control-label">PROVISIONING</label>
                                                         <div class="col-lg-9">
-                                                            <input name="provisioning" type="text"
-                                                                placeholder="placeholder" class="form-control"
+                                                            <input name="provisioning" type="number" required
+                                                                placeholder="provisioning" class="form-control"
                                                                 value="{{$row->provisioning}}">
                                                         </div>
                                                     </div>
@@ -157,8 +138,8 @@
                                                         <label
                                                             class="col-lg-3 form-control-label">TROUBLESHOOTING</label>
                                                         <div class="col-lg-9">
-                                                            <input name="troubleshooting" type="text"
-                                                                placeholder="placeholder" class="form-control"
+                                                            <input name="troubleshooting" type="number" required
+                                                                placeholder="troubleshooting" class="form-control"
                                                                 value="{{$row->troubleshooting}}">
                                                         </div>
                                                     </div>
@@ -233,16 +214,16 @@
                                         <div class="form-group row d-flex align-items-center mb-5">
                                             <label class="col-lg-3 form-control-label">PROVISIONING</label>
                                             <div class="col-lg-9">
-                                                <input name="provisioning" type="text" placeholder="placeholder"
-                                                    class="form-control">
+                                                <input name="provisioning" type="number" required
+                                                    placeholder="provisioning" class="form-control">
                                             </div>
                                         </div>
 
                                         <div class="form-group row d-flex align-items-center mb-5">
                                             <label class="col-lg-3 form-control-label">TROUBLESHOOTING</label>
                                             <div class="col-lg-9">
-                                                <input name="troubleshooting" type="text" placeholder="placeholder"
-                                                    class="form-control">
+                                                <input name="troubleshooting" type="number" required
+                                                    placeholder="troubleshooting" class="form-control">
                                             </div>
                                         </div>
                                 </div>
@@ -276,6 +257,12 @@
 <script src="{{ asset('elis/assets/js/components/tables/tables.js') }}"></script>
 <!-- End Sorting -->
 
-
+<script>
+    $(document).on('click','.deleteUser',function(){
+    var userID=$(this).attr('data-userid');
+    $('#task_id').val(userID); 
+    $('#applicantDeleteModal').modal('show'); 
+});
+</script>
 
 @endsection

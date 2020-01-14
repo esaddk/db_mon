@@ -71,11 +71,10 @@ class DatabaseController extends Controller
         return back();
     }
 
-    public function destroyDatabase($id)
+    public function destroyDatabase(Request $request)
     {
-        $database = Database::find($id);
-
-        $database->delete();
+        $database_id = $request->input('database_id');
+        $Database = Database::where('id', $database_id)->delete();
         Alert::success('Data Berhasil di hapus')->persistent("Close");
         return back();
     }

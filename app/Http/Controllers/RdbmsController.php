@@ -71,11 +71,11 @@ class RdbmsController extends Controller
         return back();
     }
 
-    public function destroyRdbms($id)
+    public function destroyRdbms(Request $request)
     {
-        $Rdbms = Rdbms::find($id);
 
-        $Rdbms->delete();
+        $rdbms_id = $request->input('rdbms_id');
+        $Rdbms = Rdbms::where('id', $rdbms_id)->delete();
         Alert::success('Data Berhasil di hapus')->persistent("Close");
         return back();
     }
