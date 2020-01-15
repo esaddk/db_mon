@@ -294,72 +294,7 @@
     </div>
     <!-- End Row -->
 
-    <div class="row">
-        <div class="page-header">
-            <div class="d-flex align-items-center">
-                <h2 class="page-header-title">Top 10 Database</h2>
-                <div>
-                    <div class="page-header-tools">
-                        {{-- <a class="btn btn-gradient-01" href="#">Add Widget</a> --}}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row flex-row">
-        <div class="col-xl-12">
-
-            <div class="widget widget-07 has-shadow">
-
-                {{-- <div class="widget-header bordered d-flex align-items-center">
-                    <h2>Top 10 DB Size</h2>
-                    <div class="widget-options">
-                        <div class="btn-group" role="group">
-                        </div>
-                    </div>
-                </div> --}}
-
-
-                <div class="widget-body">
-                    <div class="table-responsive table-scroll padding-right-10"
-                        style="max-height: 520px; overflow: hidden; outline: none;" tabindex="5">
-                        <table class="table table-hover mb-0">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Database Name</th>
-                                    <th>RDBMS Code</th>
-                                    <th>Size</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($db_size as $row)
-                                <tr>
-
-                                    <td>{{$loop->iteration}}</td>
-                                    <td><span class="text-primary">{{ $row->database->database_name }}</span></td>
-                                    <td>{{ $row->database->rdbms->code }}</td>
-                                    <td>{{ $row->size }} MB</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-
-                    </div>
-                    <div class="actions text-center">
-                        <a href="{{ route('report_db_size') }}" class="btn btn-gradient-01"
-                            style="margin-top: 20px;">View Details</a>
-                    </div>
-                </div>
-
-
-
-
-            </div>
-
-        </div>
-    </div>
+    
 
 
 

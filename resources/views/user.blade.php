@@ -10,6 +10,13 @@
                     <h4>Manage User</h4>
                 </div>
                 <div class="widget-body">
+                    @if($errors->any())
+                    @foreach ($errors->all() as $error)
+                    <div class="alert alert-outline-danger dotted" role="alert">
+                        Gagal Menambah User <strong> Password </strong> Tidak Sama !!!
+                    </div>
+                    @endforeach
+                    @endif
                     <div class="table-responsive">
                         <table id="sorting-table" class="table mb-0">
                             <thead>

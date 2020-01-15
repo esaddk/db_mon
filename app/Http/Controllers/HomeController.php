@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Database;
+use Carbon\Carbon;
+use App\Database_size;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -88,9 +90,15 @@ class HomeController extends Controller
         $name_mysql = Database::select('database_name')->where('id', $crucial_mysql[0]->db_id)->get();
         $name_postgresql = Database::select('database_name')->where('id', $crucial_postgresql[0]->db_id)->get();
 
+        $db_size = Database_size::with('database.rdbms');
+        $start_date = Carbon::now()->format('Y-m-d') . ' 00:00:01';
+        $end_date   = Carbon::now()->format('Y-m-d') . ' 23:59:59';
 
+        $db_size = $db_size->whereBetween('created_at', [$start_date, $end_date])
+            ->orderBy('size', 'desc')
+            ->take(10)->get();
 
-        return view('home', compact('count_oracle', 'count_mysql', 'count_postgresql', 'name_oracle', 'name_mysql', 'name_postgresql', 'crucial_oracle', 'crucial_mysql', 'crucial_postgresql'));
+        return view('home', compact('count_oracle', 'count_mysql', 'count_postgresql', 'name_oracle', 'name_mysql', 'name_postgresql', 'crucial_oracle', 'crucial_mysql', 'crucial_postgresql', 'db_size'));
     }
 
     public function chartTask()
