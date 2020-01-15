@@ -182,10 +182,10 @@
     </div>
     <footer>
         {{-- <p>{{$url}}</p> --}}
-        <p>http://localhost:8000/crucial_database</p>
+        {{-- <p>http://localhost:8000/crucial_database</p>
         <div style="float:right;">
             <span class="page-number">Page 1</span>
-        </div>
+        </div> --}}
     </footer>
 
 </body>

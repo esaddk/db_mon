@@ -23,7 +23,7 @@ class CrucialDatabasesController extends Controller
                                         WHERE rdbms = ? AND insert_date = ? AND l1.crucial_level >= l.crucial_level AND l1.size >= l.size
                                         AND
                                         ( l1.crucial_level > l.crucial_level OR l1.size > l.size)
-                                        ) LIMIT 1", ['oracle', '2019-12-30', 'oracle', '2019-12-30']);
+                                        ) LIMIT 1", ['oracle', '2020-01-15', 'oracle', '2020-01-15']);
 
         $crucial_mysql = DB::select("SELECT *
                                         FROM crucial_databases l
@@ -35,7 +35,7 @@ class CrucialDatabasesController extends Controller
                                         WHERE rdbms = ? AND insert_date = ? AND l1.crucial_level >= l.crucial_level AND l1.size >= l.size
                                         AND
                                         ( l1.crucial_level > l.crucial_level OR l1.size > l.size)
-                                        ) LIMIT 1", ['mysql', '2019-12-30', 'mysql', '2019-12-30']);
+                                        ) LIMIT 1", ['mysql', '2020-01-15', 'mysql', '2020-01-15']);
 
         $crucial_postgresql = DB::select("SELECT *
                                         FROM crucial_databases l
@@ -47,7 +47,7 @@ class CrucialDatabasesController extends Controller
                                         WHERE rdbms = ? AND insert_date = ? AND l1.crucial_level >= l.crucial_level AND l1.size >= l.size
                                         AND
                                         ( l1.crucial_level > l.crucial_level OR l1.size > l.size)
-                                        ) LIMIT 1", ['postgresql', '2019-12-30', 'postgresql', '2019-12-30']);
+                                        ) LIMIT 1", ['postgresql', '2020-01-15', 'postgresql', '2020-01-15']);
 
 
         $name_oracle = Database::select('database_name')->where('id', $crucial_oracle[0]->db_id)->get();
@@ -73,7 +73,7 @@ class CrucialDatabasesController extends Controller
                                         WHERE rdbms = ? AND insert_date = ? AND l1.crucial_level >= l.crucial_level AND l1.size >= l.size
                                         AND
                                         ( l1.crucial_level > l.crucial_level OR l1.size > l.size)
-                                        ) LIMIT 1", ['oracle', '2019-12-30', 'oracle', '2019-12-30']);
+                                        ) LIMIT 1", ['oracle', '2020-01-15', 'oracle', '2020-01-15']);
 
         $crucial_mysql = DB::select("SELECT *
                                         FROM crucial_databases l
@@ -85,7 +85,7 @@ class CrucialDatabasesController extends Controller
                                         WHERE rdbms = ? AND insert_date = ? AND l1.crucial_level >= l.crucial_level AND l1.size >= l.size
                                         AND
                                         ( l1.crucial_level > l.crucial_level OR l1.size > l.size)
-                                        ) LIMIT 1", ['mysql', '2019-12-30', 'mysql', '2019-12-30']);
+                                        ) LIMIT 1", ['mysql', '2020-01-15', 'mysql', '2020-01-15']);
 
         $crucial_postgresql = DB::select("SELECT *
                                         FROM crucial_databases l
@@ -97,7 +97,7 @@ class CrucialDatabasesController extends Controller
                                         WHERE rdbms = ? AND insert_date = ? AND l1.crucial_level >= l.crucial_level AND l1.size >= l.size
                                         AND
                                         ( l1.crucial_level > l.crucial_level OR l1.size > l.size)
-                                        ) LIMIT 1", ['postgresql', '2019-12-30', 'postgresql', '2019-12-30']);
+                                        ) LIMIT 1", ['postgresql', '2020-01-15', 'postgresql', '2020-01-15']);
 
         $name_oracle = Database::select('database_name')->where('id', $crucial_oracle[0]->db_id)->get();
         $name_mysql = Database::select('database_name')->where('id', $crucial_mysql[0]->db_id)->get();

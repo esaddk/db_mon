@@ -35,7 +35,7 @@
                                     <td>{{ $row->rdbms->code }}</td>
                                     <td>{{ $row->application->app_name }}</td>
                                     <td>{{ $row->database_name }}</td>
-                                    <td>{{ $row->size_alocation }}</td>
+                                    <td>{{ $row->size_alocation }} GB</td>
                                     <td>{{ $row->description }}</td>
                                     <td>{{ $row->created_at }}</td>
 
@@ -157,7 +157,7 @@
                                                             Alocation</label>
                                                         <div class="col-lg-9">
                                                             <input name="size_alocation" type="text"
-                                                                placeholder="Alokasi Ukuran DB (dalam MB)"" class="
+                                                                placeholder="Alokasi Ukuran DB (dalam GB)"" class="
                                                                 form-control" value="{{$row->size_alocation}}" required>
                                                         </div>
                                                     </div>
@@ -267,7 +267,7 @@
                                             <label class="col-lg-3 form-control-label">Size Alocation</label>
                                             <div class="col-lg-9">
                                                 <input name="size_alocation" type="text"
-                                                    placeholder="Alokasi Ukuran DB (dalam MB)" class="form-control"
+                                                    placeholder="Alokasi Ukuran DB (dalam GB)" class="form-control"
                                                     required>
                                             </div>
                                         </div>

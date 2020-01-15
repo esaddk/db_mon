@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Application;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
+
 
 class ApplicationController extends Controller
 {
@@ -18,6 +20,17 @@ class ApplicationController extends Controller
 
     public function InsertApplication(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'app_name' => 'required|unique:applications,app_name',
+        ]);
+
+        if ($validator->fails()) {
+            $message = $validator->errors()->first();
+            // return $message;
+            Alert::error('Error Add Data', '' . $message . '')->persistent("Close");
+            return back();
+        }
+
         Application::create($request->all());
         Alert::success('Data Application Berhasil Ditambahkan')->persistent("Close");
         return back();

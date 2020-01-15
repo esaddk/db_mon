@@ -29,7 +29,7 @@ class DatabaseSizeController extends Controller
 
             // return $start_date;
 
-            $db_size = $db_size->whereBetween('created_at', [$start_date, $end_date])->get();
+            $db_size = $db_size->whereBetween('created_at', [$start_date, $end_date])->orderBy('size', 'desc')->get();
 
             Session::put('lap_start_date', $start_date);
             Session::put('lap_end_date', $end_date);

@@ -110,7 +110,8 @@
                                                     <div class="form-group row d-flex align-items-center mb-5">
                                                         <label class="col-lg-3 form-control-label">App Name</label>
                                                         <div class="col-lg-9">
-                                                            <input name="app_name" type="text" placeholder="placeholder"
+                                                            <input name="app_name" type="text"
+                                                                placeholder="Nama Aplikasi" required
                                                                 class="form-control" value="{{$row->app_name}}">
                                                         </div>
                                                     </div>
@@ -118,8 +119,8 @@
                                                     <div class="form-group row d-flex align-items-center mb-5">
                                                         <label class="col-lg-3 form-control-label">App PIC</label>
                                                         <div class="col-lg-9">
-                                                            <input name="app_pic" type="text" placeholder="placeholder"
-                                                                class="form-control" value="{{$row->app_pic}}">
+                                                            <input name="app_pic" type="text" placeholder="Nama PIC"
+                                                                required class="form-control" value="{{$row->app_pic}}">
                                                         </div>
                                                     </div>
 
@@ -168,7 +169,7 @@
                                         <div class="form-group row d-flex align-items-center mb-5">
                                             <label class="col-lg-3 form-control-label">App Name</label>
                                             <div class="col-lg-9">
-                                                <input name="app_name" type="text" placeholder="placeholder"
+                                                <input name="app_name" type="text" placeholder="Nama Aplikasi" required
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -176,7 +177,7 @@
                                         <div class="form-group row d-flex align-items-center mb-5">
                                             <label class="col-lg-3 form-control-label">App PIC</label>
                                             <div class="col-lg-9">
-                                                <input name="app_pic" type="text" placeholder="placeholder"
+                                                <input name="app_pic" type="text" placeholder="Nama PIC" required
                                                     class="form-control">
                                             </div>
                                         </div>

@@ -131,9 +131,9 @@
                                                     <div class="form-group row d-flex align-items-center mb-5">
                                                         <label class="col-lg-3 form-control-label">Count Percent</label>
                                                         <div class="col-lg-9">
-                                                            <input name="count_percent" type="text"
-                                                                placeholder="placeholder" class="form-control"
-                                                                value="{{$row->count_percent}}">
+                                                            <input name="count_percent" type="text" required
+                                                                placeholder="Presentase Avilbility Server"
+                                                                class="form-control" value="{{$row->count_percent}}">
                                                         </div>
                                                     </div>
 
@@ -217,7 +217,8 @@
                                         <div class="form-group row d-flex align-items-center mb-5">
                                             <label class="col-lg-3 form-control-label">Count Percent</label>
                                             <div class="col-lg-9">
-                                                <input name="count_percent" type="number" placeholder="presentase"
+                                                <input name="count_percent" type="number"
+                                                    placeholder="Presentase Avilbility Server" required
                                                     class="form-control">
                                             </div>
                                         </div>
