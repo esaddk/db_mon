@@ -6,6 +6,7 @@
                         <li class="{{ request()->is('home*') ? 'active' : '' }}"><a href="{{ route('home') }}"><i
                                                 class="la la-columns"></i><span>Dashboard</span></a>
                         </li>
+                        @hasanyrole('admin|staff')
                         <li class="{{ request()->is('database*') ? 'active' : '' }}"><a
                                         href="{{ route('database') }}"><i
                                                 class="la la-database"></i><span>Database</span></a></li>
@@ -20,11 +21,13 @@
                         <li class="{{ request()->is('task*') ? 'active' : '' }}"><a href=" {{ route('task') }}"><i
                                                 class="la la-desktop"></i><span>DBA Weekly Task</span></a></li>
                         </li>
+                        @endhasanyrole
                         @role('admin')
                         <li class="{{ request()->is('users*') ? 'active' : '' }}"><a
                                         href="{{ route('users.index') }}"><i
                                                 class="la la-user"></i><span>User</span></a></li>
                         @endrole
+                        @hasanyrole('admin|staff|management')
                         <li class="{{ request()->is('report*') ? 'active' : '' }}"><a href="#dropdown-app"
                                         aria-expanded="{{ request()->is('report*') ? 'true' : '' }}"
                                         data-toggle="collapse"><i class="la la-puzzle-piece"></i><span>Report</span></a>
@@ -58,6 +61,7 @@
                                         {{-- ordering PostgreSQL object size --}}
                                 </ul>
                         </li>
+                        @endhasanyrole
                 </ul>
         </nav>
         <!-- End Side Navbar -->

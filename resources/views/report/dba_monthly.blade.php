@@ -5,6 +5,54 @@
     <div class="row">
         <div class="col-xl-12">
             <!-- Sorting -->
+
+            <div class="widget has-shadow">
+                <div class="widget-header bordered no-actions d-flex align-items-center">
+                    <h4>Filter Data</h4>
+                </div>
+                <div class="widget-body">
+                    <form method="get" action="{{ route('report_task') }}">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div style="margin-left:50px"><label class="form-control-label">Start Date</label></div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="la la-calendar"></i>
+                                        </span>
+                                        <input type="text" class="form-control" name="start_date" id="start-date"
+                                            placeholder="Start Date"
+                                            {{-- value="{{ request()->get('start_date') == null ? $phd_today  : request()->get('start_date') }}"
+                                            --}}>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div style="margin-left:50px"><label class="form-control-label">End Date</label></div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="la la-calendar"></i>
+                                        </span>
+                                        <input type="text" class="form-control" name="end_date" id="end-date"
+                                            placeholder="End Date">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-left:50px">
+                            {{-- <a href="{{ route('report_availbility') }}" target="_blank"
+                            class="btn btn-primary ripple mr-1 mb-2">
+                            <i class="fa fa-print"></i> Filter Data
+                            </a> --}}
+                            <div class="form-group">
+                                <button class="btn btn-primary ripple mr-1 mb-2">Filter Data</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <div class="widget has-shadow">
                 <div class="widget-header bordered no-actions d-flex align-items-center">
                     <h4>DBA Monthly Report</h4>
@@ -71,8 +119,9 @@
 <script src="{{ asset('elis/assets/vendors/js/datatables/vfs_fonts.js') }}"></script>
 <script src="{{ asset('elis/assets/vendors/js/datatables/buttons.print.min.js') }}"></script>
 <script src="{{ asset('elis/assets/js/components/tables/tables.js') }}"></script>
-<!-- End Sorting -->
 
-
+<script src="{{ asset('elis/assets/js/components/datepicker/datepicker.js') }}"></script>
+<script src="{{ asset('elis/assets/vendors/js/datepicker/moment.min.js') }}"></script>
+<script src="{{ asset('elis/assets/vendors/js/datepicker/daterangepicker.js') }}"></script>
 
 @endsection
