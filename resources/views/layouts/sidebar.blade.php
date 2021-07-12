@@ -34,34 +34,35 @@
 
                                 <ul id="dropdown-app"
                                         class="collapse list-unstyled pt-0 {{ request()->is('report*') ? 'show' : '' }}">
-                                        <li><a class="{{ request()->is('report_crucial*') ? 'active' : '' }}"
-                                                        href="{{ route('report_crucial') }}">Mapping Crucial
-                                                        Database</a></li>
-                                        {{-- Database group by env application  --}}
-                                        <li><a class="{{ request()->is('report_task*') ? 'active' : '' }}"
-                                                        href="{{ route('report_task') }}">DBA Monthly Report</a></li>
-                                        {{-- kegiatan summary bulanan DBA Unutk report ke manajemen --}}
-                                        <li><a class="{{ request()->is('report_availbility*') ? 'active' : '' }}"
-                                                        href="{{ route('report_availbility') }}">DB Availbility</a></li>
-                                        {{-- % tase dari dari database group by server --}}
-                                        <li><a class="{{ request()->is('report_db_size*') ? 'active' : '' }}"
-                                                        href="{{ route('report_db_size') }}">Database Size</a>
-                                        </li>
-                                        {{-- order database size group by rdbms type --}}
-                                        <li><a class="{{ request()->is('report_mysql_object*') ? 'active' : '' }}"
-                                                        href="{{ route('report_mysql_object') }}">MySQL Object</a></li>
-                                        {{-- ordering mysql object size --}}
-                                        <li><a class="{{ request()->is('report_oracle_object*') ? 'active' : '' }}"
-                                                        href="{{ route('report_oracle_object') }}">Oracle Object</a>
-                                        </li>
-                                        {{-- ordering oracle object size --}}
-                                        <li><a class="{{ request()->is('report_postgre_object*') ? 'active' : '' }}"
-                                                        href="{{ route('report_postgre_object') }}">PostgreSQL
-                                                        Object</a></li>
-                                        {{-- ordering PostgreSQL object size --}}
-                                </ul>
+                                        {{-- <li><a class="{{ request()->is('report_crucial*') ? 'active' : '' }}"
+                                        href="{{ route('report_crucial') }}">Mapping Crucial
+                                        Database</a>
+                        </li> --}}
+                        {{-- Database group by env application  --}}
+                        <li><a class="{{ request()->is('report_task*') ? 'active' : '' }}"
+                                        href="{{ route('report_task') }}">DBA Monthly Report</a></li>
+                        {{-- kegiatan summary bulanan DBA Unutk report ke manajemen --}}
+                        <li><a class="{{ request()->is('report_availbility*') ? 'active' : '' }}"
+                                        href="{{ route('report_availbility') }}">DB Availbility</a></li>
+                        {{-- % tase dari dari database group by server --}}
+                        <li><a class="{{ request()->is('report_db_size*') ? 'active' : '' }}"
+                                        href="{{ route('report_db_size') }}">Database Size</a>
                         </li>
-                        @endhasanyrole
+                        {{-- order database size group by rdbms type --}}
+                        <li><a class="{{ request()->is('report_mysql_object*') ? 'active' : '' }}"
+                                        href="{{ route('report_mysql_object') }}">MySQL Object</a></li>
+                        {{-- ordering mysql object size --}}
+                        <li><a class="{{ request()->is('report_oracle_object*') ? 'active' : '' }}"
+                                        href="{{ route('report_oracle_object') }}">Oracle Object</a>
+                        </li>
+                        {{-- ordering oracle object size --}}
+                        <li><a class="{{ request()->is('report_postgre_object*') ? 'active' : '' }}"
+                                        href="{{ route('report_postgre_object') }}">PostgreSQL
+                                        Object</a></li>
+                        {{-- ordering PostgreSQL object size --}}
+                </ul>
+                </li>
+                @endhasanyrole
                 </ul>
         </nav>
         <!-- End Side Navbar -->

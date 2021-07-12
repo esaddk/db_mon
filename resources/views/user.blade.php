@@ -13,7 +13,7 @@
                     @if($errors->any())
                     @foreach ($errors->all() as $error)
                     <div class="alert alert-outline-danger dotted" role="alert">
-                        Gagal Menambah User <strong> Password </strong> Tidak Sama !!!
+                        Error adding user => <strong> {{$error}} </strong> !!!
                     </div>
                     @endforeach
                     @endif
